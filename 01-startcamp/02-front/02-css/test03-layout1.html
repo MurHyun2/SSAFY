@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        body {
+            height: 1600px;
+        }
+
+        .play-box {
+            border: 1px solid #333;
+            width: 300px;
+            height: 200px;
+            margin: 10px;
+        }
+
+        /* 
+            -position
+                static
+                { // 좌표 기준 정렬
+                absolute : position이 있는 부모를 기준으로 정렬.
+                relative : 기본으로 들어가야 되는 장소를 기준점으로 잡음.
+                fixed
+                sticky
+                }
+        */
+        .play-box {
+            position: relative;
+            /* top : 50px;
+            left: 50px; */
+        }
+
+        .play-box-time {
+            position: absolute;
+            border: 1px solid;
+            width: 80px;
+            right: 5px;
+            bottom: 5px;
+        }
+
+        .chat-message {
+            z-index: 1;
+            border: 5px solid #333;
+            background-color: wheat;
+            position: fixed;
+            width: 200px;
+            height: 300px;
+            top: 300px;
+            left: 300px;
+        }
+
+        .close-btn {
+            position: absolute;
+            color: white;
+            background-color: black;
+            top: 0px;
+            right: 0px;
+            width: 25px;
+            height: 25px;
+            font-weight: bold;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        .close-btn:hover {
+            cursor: grabbing;
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="chat-message">
+        <div class="close-btn">x</div>
+    </div>
+    <div class="play-box">
+        <div class="play-box-time">11:20:22</div>
+    </div>
+    <div class="play-box">
+        <div class="play-box-time">04:10:42</div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,10 @@
+package com.ssafy.ws.day02.step2;
+
+public class MovieTest {
+
+	public static void main(String[] args) {
+		Movie movie = new Movie(1, "어바웃 타임", "리처드 커티스", "로맨스", 123);
+		
+		
+	}
+}

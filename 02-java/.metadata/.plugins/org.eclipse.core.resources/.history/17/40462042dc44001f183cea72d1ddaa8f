@@ -1,0 +1,35 @@
+package com.ssafy.hw.day05.step4;
+
+/**
+ * 상품 객체를 생성하고 출력하는 클래스
+ *
+ */
+public class ProductTest {
+	public static void main(String[] args) {
+		Product pd1 = new Product("1", "과자", 1500, 100, "농심", "1");
+		Product pd2 = new Product("2", "빵", 2500, 50, "삼립", "2");
+
+		ProductManager pm = new ProductManager();
+
+		pm.addProduct(pd1);
+		pm.addProduct(pd2);
+
+		System.out.println("-------------getList-------------");
+		Product[] productList = pm.getProductList();
+		for (Product p : productList)
+			System.out.println(p);
+
+		Product pd3 = new Product("2", "맘모스빵", 3500, 10, "삼립", "2");
+		pm.updateProduct(pd3, "2");
+
+		productList = pm.getProductList();
+		for (Product p : productList)
+			System.out.println(p);
+
+		pm.removeProduct("2");
+		for (Product p : productList)
+			System.out.println(p);
+		
+		
+	}
+}

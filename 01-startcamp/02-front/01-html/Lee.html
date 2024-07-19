@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSAFY 12기 대전4반 이대현입니다.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Nanum+Pen+Script&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            background-image: url(../assets/images/back.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            font-family: "Gamja Flower", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            font-size: 35px;
+        }
+
+        .header {
+            height: 100px;
+            opacity: 0.97;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: rgb(47, 47, 47);
+        }
+
+        .left {
+            background-image: url(../assets/images/left.jpg);
+            width: 15%;
+            float: left;
+            text-align: center;
+        }
+
+        .left li {
+            list-style-type: none;
+        }
+
+        .right {
+            width: 65%;
+            float: left;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .content {
+            font-family: "Nanum Pen Script", cursive;
+            font-weight: 400;
+            font-style: normal;
+            text-align: center;
+            position: relative;
+            background-color: rgba(255, 255, 255, 0.97);
+            border-radius: 10%;
+        }
+
+        img {
+            box-shadow: 5px 3px 3px 3px #333;
+        }
+
+        .me {
+            width: 250px;
+            height: 300px;
+            border-radius: 100%;
+        }
+
+        .left img {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            transition: 0.5s;
+        }
+
+        .left img:hover {
+            transform: scale(2);
+        }
+
+        .imgs {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            margin: 20px auto;
+        }
+
+        .imgs img {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            opacity: 0.2;
+            transition: 0.5s;
+        }
+
+        .one {
+            left: -80px;
+            top: 0;
+            z-index: 3;
+        }
+
+        .two {
+            left: 40px;
+            top: 0;
+            z-index: 2;
+        }
+
+        .three {
+            left: 180px;
+            top: 0;
+            z-index: 1;
+        }
+
+        .imgs img:hover {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h1>안녕하세요! 이대현입니다! </h1>
+    </div>
+    <div class="left">
+        <h1>About me</h1>
+        <ul>
+            <li><img class="mbti" src="../assets/images/INTP.png" alt=""></li>
+            <li><img src="../assets/images/java.png" alt=""></li>
+            <li><img src="../assets/images/gpt.png" alt=""></li>
+            <li><img src="../assets/images/backend.png" alt=""></li>
+        </ul>
+    </div>
+    <div class="right">
+        <div class="content">
+            <img class="me" src="../assets/images/lee.jpg" alt="">
+            <h2>이름 : 이대현</h2>
+            <h2>나이 : 만 26세(1997년생)</h2>
+            <h2>생일 : 12월 19일</h2>
+            <h3>안녕하세요! 긍정적으로 생각하려고 노력하는 이대현입니다.</h3>
+            <h3 class="hobby">취미는 헬스, 피아노, 산책입니다.</h3>
+            <h3>백엔드 개발자를 꿈꾸고 있습니다. 함께 도전하고 성장하고 싶어요.</h3>
+            <h3>감사합니다!</h3>
+            <div class="imgs">
+                <img class="one" src="../assets/images/weight.png" alt="">
+                <img class="two" src="../assets/images/piano.png" alt="">
+                <img class="three" src="../assets/images/walk.png" alt="">
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

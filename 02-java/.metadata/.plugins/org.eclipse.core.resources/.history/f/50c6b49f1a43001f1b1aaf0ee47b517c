@@ -1,0 +1,8 @@
+package com.ssafy.hw.day01;
+
+public class Snippet {
+	public static void main(String[] args) {
+		com.ssafy.hw.day01
+	}
+}
+

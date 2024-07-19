@@ -1,0 +1,10 @@
+package com.ssafy.ws.step5;
+import java.util.Scanner;
+
+public class Fernace {
+
+	public static void main(String[] args) {
+		// 코드를 작성하세요.
+	}
+
+}

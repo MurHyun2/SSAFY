@@ -1,0 +1,57 @@
+package selenium_practice;
+
+import java.io.IOException;
+import java.time.Duration;
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class SeleniumTest {
+	public static void main(String[] args) throws IOException {
+		WebDriver driver = new ChromeDriver();
+		Actions act = new Actions(driver);
+//		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		String nick = "하브뷰";
+		
+		try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+			driver.get("https://lostark.game.onstove.com/Main");
+			
+			WebElement we = driver.findElement(By.cssSelector("#modal-summer > div > div > div.lui-modal__button > button.button--close"));
+			we.click();
+			
+			we = driver.findElement(By.cssSelector("#modal-mokoko > div > div > div.lui-modal__button > button.button--close"));
+			we.click();
+			
+			we = driver.findElement(By.cssSelector("#lostark-wrapper > header > nav > ul > li:nth-child(2) > a"));
+			we.click();
+			
+			we = driver.findElement(By.cssSelector("#lostark-wrapper > div > main > div > div > div.profile-search > form > fieldset > input"));
+			we.sendKeys(nick);
+			we.sendKeys(Keys.ENTER);
+			
+			we = driver.findElement(By.cssSelector("#profile-ability > div.lui-tab.profile-ability-tab > div.lui-tab__menu.ability-menu > a.tab-full.lui-tab__link--active"));
+			we.click();
+			
+			List<WebElement> jewels = driver.findElements(By.cssSelector("#profile-jewel > div > div.jewel__wrap span.jewel_level"));
+			
+			for (WebElement el : jewels) {
+				System.out.println(el);
+			}
+			
+			System.out.println("Element found");
+		} catch (Exception e) {
+			System.out.println("Error: " + e.getMessage());
+		} finally {
+			// 브라우저 닫기
+//			driver.quit();
+		}
+
+	}
+}
