@@ -1,0 +1,31 @@
+package selenium_practice;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class SeleniumTest {
+	public static void main(String[] args) {
+		WebDriver driver = new ChromeDriver();
+
+
+		try {
+			driver.get("https://lostark.game.onstove.com/Main");
+			
+			WebElement we = driver.findElement(By.cssSelector("#modal-summer > div > div > div.lui-modal__button > button.button--close"));
+			
+			
+			
+			
+			
+			System.out.println("Element found");
+		} catch (Exception e) {
+			System.out.println("Error: " + e.getMessage());
+		} finally {
+			// 브라우저 닫기
+//			driver.quit();
+		}
+
+	}
+}

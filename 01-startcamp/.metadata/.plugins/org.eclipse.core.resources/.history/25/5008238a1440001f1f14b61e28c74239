@@ -1,0 +1,41 @@
+package selenium_practice;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class SeleniumTest {
+	public static void main(String[] args) {
+		WebDriver driver = new ChromeDriver();
+
+
+		try {
+			driver.get("https://finance.naver.com/");
+			
+//			WebElement financeBtn = driver.findElement(By.cssSelector("#shortcutArea > ul > li:nth-child(6) > a"));
+//			financeBtn.click();
+
+			WebElement searchInput = driver.findElement(By.cssSelector("#stock_items"));
+			
+//			searchInput.sendKeys("삼성전자");
+//			searchInput.sendKeys(Keys.ENTER);
+			
+			List<WebElement> news = driver.findElements(By.cssSelector("#content > div.article > div.section > div.news_area._replaceNewsLink > div > ul a"));
+			for (WebElement el : news) {
+				System.out.println(el.getText());
+			}
+			
+			System.out.println("Element found");
+		} catch (Exception e) {
+			System.out.println("Error: " + e.getMessage());
+		} finally {
+			// 브라우저 닫기
+//			driver.quit();
+		}
+
+	}
+}

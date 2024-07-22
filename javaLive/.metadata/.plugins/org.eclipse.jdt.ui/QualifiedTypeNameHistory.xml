@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="java.lang.NullPointerException"/>
+    <fullyQualifiedTypeName name="com.ssafy.offline.Test01Manager"/>
+    <fullyQualifiedTypeName name="modifier07_object_array.StudentManager"/>
+    <fullyQualifiedTypeName name="test05_overriding.Animal"/>
+    <fullyQualifiedTypeName name="test05_overriding.Cate"/>
+    <fullyQualifiedTypeName name="test05_overriding.Dog"/>
+</qualifiedTypeNameHistroy>

@@ -1,0 +1,25 @@
+package selenium_practice;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class SeleniumTest {
+	public static void main(String[] args) {
+		WebDriver driver = new ChromeDriver();
+
+
+		try {
+			driver.get("https://lostark.game.onstove.com/Main");
+			
+			
+			
+			System.out.println("Element found");
+		} catch (Exception e) {
+			System.out.println("Error: " + e.getMessage());
+		} finally {
+			// 브라우저 닫기
+//			driver.quit();
+		}
+
+	}
+}

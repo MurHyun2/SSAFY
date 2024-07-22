@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border-radius: 100%;
+            opacity: .7;
+            transition: 2;
+        }
+
+        /* .shadow {
+            border: 1px solid #345;
+            top: 50px;
+            left: 50px;
+            box-shadow: 10px 10px 1px 1px #3455;
+        } */
+
+        .one {
+            background-color: thistle;
+            left: 50px;
+            top: 50px;
+        }
+
+        .two {
+            background-color: antiquewhite;
+            left: 150px;
+            top: 150px;
+        }
+        .three {
+            background-color: rgb(255, 145, 0);
+            left: 250px;
+            top: 250px;
+        }
+        .four {
+            background-color: rgb(0, 213, 255);
+            left: 350px;
+            top: 350px;
+        }
+        div:hover {
+            z-index: 1;
+            box-shadow: 10px 10px 1px 1px #3455;
+            opacity: 0.9;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="one"></div>
+    <div class="two"></div>
+    <div class="three"></div>
+    <div class="four"></div>
+    <div class="shadow"></div>
+</body>
+</html>

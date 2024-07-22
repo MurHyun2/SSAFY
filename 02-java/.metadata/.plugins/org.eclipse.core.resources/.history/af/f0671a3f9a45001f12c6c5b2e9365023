@@ -1,0 +1,20 @@
+package com.ssafy.ws.day06.step2;
+
+import java.util.Arrays;
+
+/**
+ * 영화리스트를 배열로 관리하는 클래스
+ * @author 
+ *
+ */
+public class MovieManager {
+	private int MAX_SIZE = 100;
+	private Movie[] movieList = new Movie[MAX_SIZE];
+	private int size = 0;
+	
+	public void add(Movie movie) {
+		movieList[size++] = movie;
+	}
+	
+	
+}

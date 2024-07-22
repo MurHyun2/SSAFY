@@ -1,0 +1,10 @@
+package com.ssafy.hw.step2;
+
+public class DayCount {
+
+	public static void main(String[] args) {
+		//코드를 작성하세요.
+		System.out.println();
+	}
+
+}

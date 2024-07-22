@@ -1,0 +1,26 @@
+package com.ssafy.ws.day02.step2;
+
+/**
+ * 영화리스트를 배열로 관리하는 클래스
+ * 
+ * @author
+ *
+ */
+public class MovieManager {
+	private int MAX_SIZE = 100;
+
+	private Movie[] movieList = new Movie[MAX_SIZE];
+
+	int size = 0;
+
+	public boolean add(Movie mv) {
+		if (size < 100) {
+			movieList[size++] = mv;
+			return true;
+		}
+		return false;
+	}
+	
+	
+	
+}

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            width: 500px;
+        }
+
+        table,
+        td,
+        th {
+            border: 1px solid #123;
+            border-collapse: collapse;
+        }
+
+        td {
+            padding: 10px;
+            padding: 5px 30px 5px 30px;
+            padding: 5px 30px;
+            padding-left: 50px;
+
+            background-color: bisque;
+            font-weight: bold;
+            font-size: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th colspan="2">순번</th>
+                <th>이름</th>
+                <th>나이</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td rowspan="3">대전</td>
+                <td>1</td>
+                <td>가나다</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>라마바</td>
+                <td>6</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>사아자</td>
+                <td>9</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>총</td>
+                <td colspan="3">3명</td>
+            </tr>
+        </tfoot>
+    </table><br>
+    <table>
+        <tr>
+            <td rowspan="2">1</td>
+            <td colspan="2">2</td>
+        </tr>
+        <tr >
+            <td>3</td>
+            <td rowspan="2">4</td>
+        </tr>
+        <tr>
+            <td colspan="2">5</td>
+        </tr>
+    </table>
+</body>
+
+</html>

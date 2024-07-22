@@ -1,0 +1,4 @@
+public class ChatGPT {
+	private static String API_KEY = "sk-proj-1GRgTbMkmgc1QjOyCuOmT3BlbkFJBYqLlKtF5UrMAhrdAsZK";
+	private static String GPT_URL = "https://api.openai.com/v1/chat/completions";
+}

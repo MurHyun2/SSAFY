@@ -1,0 +1,8 @@
+package com.ssafy.class1;
+
+public class Test05_Datatype {
+	public static void main(String[] args) {
+		int i = 100;
+		System.out.println(i);
+	}
+}
