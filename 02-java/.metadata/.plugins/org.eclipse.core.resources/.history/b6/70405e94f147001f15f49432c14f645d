@@ -1,0 +1,18 @@
+package com.ssafy.ws.day06.step3;
+
+import java.util.Arrays;
+
+public class BookManager {
+	private int MAX_SIZE = 100;
+	private Book[] books = new Book[MAX_SIZE];
+	private int size = 0;
+	
+	void add(Book book) {
+		if(size < MAX_SIZE)
+			books[size++] = book;
+	}
+	
+	void remove(String isbn) {
+		
+	}
+}

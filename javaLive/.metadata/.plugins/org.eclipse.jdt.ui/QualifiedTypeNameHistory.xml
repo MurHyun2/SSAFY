@@ -6,4 +6,11 @@
     <fullyQualifiedTypeName name="test05_overriding.Animal"/>
     <fullyQualifiedTypeName name="test05_overriding.Cate"/>
     <fullyQualifiedTypeName name="test05_overriding.Dog"/>
+    <fullyQualifiedTypeName name="com.ssafy.offline.AbsChild"/>
+    <fullyQualifiedTypeName name="com.ssafy.offline.AbsSuper"/>
+    <fullyQualifiedTypeName name="com.ssafy.offline.AbsSub"/>
+    <fullyQualifiedTypeName name="java.lang.Override"/>
+    <fullyQualifiedTypeName name="java.lang.String"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="java.util.LinkedList"/>
 </qualifiedTypeNameHistroy>
