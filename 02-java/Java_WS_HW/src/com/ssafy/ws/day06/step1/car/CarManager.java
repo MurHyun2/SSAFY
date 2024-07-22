@@ -7,6 +7,9 @@ public class CarManager {
 	private Car[] carList = new Car[100];
 	// 현재 등록된 자동차 정보 수
 	private int size = 0;
+	
+	private ElectricCar[] ecList = new ElectricCar[100];
+	private int ecSize = 0;
 
 	// 자동차 등록
 	// 전체의 개수가 100개가 넘지 않을 때 저장하고 true를 반환 넘었다면 false를 반환
@@ -30,6 +33,13 @@ public class CarManager {
 //		return result;
 		return Arrays.copyOf(carList, size);
 	}
+	
+//	public ElectricCar[] getElectricCar() {
+//		for (int i = 0; i < size; i++) {
+//		}
+//		
+//		return ec;
+//	}
 
 	// 해당 인자를 가진 자동차 배열 반환
 	public Car[] searchByModelName(String modelName) {
@@ -47,5 +57,23 @@ public class CarManager {
 			}
 		}
 		return result;
+	}
+	
+	public ElectricCar[] getElectricCars() {
+		int cnt = 0;
+		for (int i = 0; i < this.size; i++) {
+			if (carList[i] instanceof ElectricCar)
+				cnt++;
+		}
+		
+		ElectricCar[] eList = new ElectricCar[cnt];
+		
+		int idx = 0;
+		for (int i = 0; i < this.size; i++) {
+			if (carList[i] instanceof ElectricCar) {
+				eList[idx++] = (ElectricCar) carList[i];
+			}
+		}
+		return eList;
 	}
 }

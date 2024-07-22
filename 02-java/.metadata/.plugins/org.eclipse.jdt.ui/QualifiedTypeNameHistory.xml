@@ -21,7 +21,6 @@
     <fullyQualifiedTypeName name="com.ssafy.ws.day04.step2.Movie"/>
     <fullyQualifiedTypeName name="java.lang.Override"/>
     <fullyQualifiedTypeName name="com.ssafy.ws.day04.step3.Book"/>
-    <fullyQualifiedTypeName name="java.lang.String"/>
     <fullyQualifiedTypeName name="com.ssafy.ws.day04.step4.RestaurantTest"/>
     <fullyQualifiedTypeName name="com.ssafy.ws.day04.step4.Restaurant"/>
     <fullyQualifiedTypeName name="com.ssafy.ws.day04.step4.Review"/>
@@ -40,4 +39,17 @@
     <fullyQualifiedTypeName name="com.ssafy.hw.day05.step4.ProductManager"/>
     <fullyQualifiedTypeName name="com.ssafy.hw.day05.step4.Review"/>
     <fullyQualifiedTypeName name="java.lang.Comparable"/>
+    <fullyQualifiedTypeName name="com.ssafy.ws.day06.step1.Person"/>
+    <fullyQualifiedTypeName name="com.ssafy.ws.day06.step1.Student"/>
+    <fullyQualifiedTypeName name="java.lang.Object"/>
+    <fullyQualifiedTypeName name="java.lang.String"/>
+    <fullyQualifiedTypeName name="com.ssafy.ws.day06.step1.car.ElectricCar"/>
+    <fullyQualifiedTypeName name="com.ssafy.ws.day06.step2.Movie"/>
+    <fullyQualifiedTypeName name="com.ssafy.ws.day06.step2.MovieManager"/>
+    <fullyQualifiedTypeName name="com.ssafy.hw.day06.step2.VipUser"/>
+    <fullyQualifiedTypeName name="com.ssafy.hw.day06.step2.User"/>
+    <fullyQualifiedTypeName name="com.ssafy.ws.day06.step2.Student"/>
+    <fullyQualifiedTypeName name="com.ssafy.ws.day06.step2.Person"/>
+    <fullyQualifiedTypeName name="com.ssafy.ws.day06.step2.Teacher"/>
+    <fullyQualifiedTypeName name="com.ssafy.ws.day06.step2.SeriesMovie"/>
 </qualifiedTypeNameHistroy>

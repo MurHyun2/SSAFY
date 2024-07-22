@@ -19,21 +19,29 @@ public class CarTest {
 		System.out.println(car1);
 		System.out.println(car2);
 		
-		CarManager cm = new CarManager();
+		Car ec = new ElectricCar("KNHXX00XXXX001234", "아이오닉", "Gold", 135000, 100);
+		System.out.println(ec);
 		
+		CarManager cm = new CarManager();
+
 		cm.add(car1);
 		cm.add(car2);
+		cm.add(ec);
 		
 		System.out.println("-------------getList-------------");
 		Car[] carList = cm.getList();
-		for(Car c : carList)
+		for (Car c : carList)
 			System.out.println(c);
-		
+
 		System.out.println("-------------searchByModelName(K가 들어가는 모델)-------------");
 		Car[] searchList = cm.searchByModelName("K");
-		for(Car c : searchList)
+		for (Car c : searchList)
 			System.out.println(c);
 		
-		
+		System.out.println("-------------getElectricCars-------------");
+		ElectricCar[] eCar = cm.getElectricCars();
+		for (ElectricCar e : eCar) {
+			System.out.println(e);
+		}
 	}
 }
