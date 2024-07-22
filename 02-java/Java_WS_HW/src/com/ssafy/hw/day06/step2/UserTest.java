@@ -13,6 +13,8 @@ public class UserTest {
 		User user2 = new User("user2", "user2", "박싸피", "ssafy2@ssafy.com", 28);
 		VipUser vuser = new VipUser("vip1", "vip1", "김싸피" , "ssafy3@ssafy.com", 29, "Gold", 300);
 		
+		VipUser[] vus = new VipUser[3];
+		
 		UserManager um = new UserManager();
 		
 		um.add(user1);
