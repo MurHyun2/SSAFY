@@ -1,0 +1,10 @@
+package com.ssafy.ws.step2;
+
+import java.util.Arrays;
+
+/**
+ * 도서리스트를 배열로 유지하며 관리하는 클래스
+ */
+public class MovieManagerImpl implements IMovieManager {
+	//코드를 작성해주세요. 
+}

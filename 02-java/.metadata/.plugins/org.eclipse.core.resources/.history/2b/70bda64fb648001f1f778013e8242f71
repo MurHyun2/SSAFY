@@ -1,0 +1,67 @@
+package com.ssafy.ws.day07.step2;
+
+import java.util.Arrays;
+
+/**
+ * 도서리스트를 배열로 유지하며 관리하는 클래스
+ */
+public class MovieManagerImpl implements IMovieManager {
+	private final int MAX_SIZE = 100;
+	private Movie[] movieList = new Movie[MAX_SIZE];
+	private int size = 0;
+	private static IMovieManager instance = new MovieManagerImpl();
+	
+	private MovieManagerImpl() {}
+	
+	public static IMovieManager getInstance() {
+		return instance;
+	}
+
+	@Override
+	public void add(Movie movie) {
+		if(size < MAX_SIZE)
+			movieList[size++] = movie;
+	}
+
+	@Override
+	public Movie[] getList() {
+		return Arrays.copyOf(movieList, size);
+	}
+
+	@Override
+	public Movie[] searchByTitle(String title) {
+		int idx = 0;
+		for (int i = 0; i < size; i++) {
+			if(movieList[i].getTitle().equals(title))
+				idx++;
+		}
+		Movie[] arr = new Movie[idx];
+		idx = 0;
+		for (int i = 0; i < size; i++) {
+			if(movieList[i].getTitle().equals(title)) {
+				arr[idx] = movieList[i]; 
+				return arr;
+			}
+		}
+		return null;
+	}
+
+	@Override
+	public Movie[] getMovies() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public SeriesMovie[] getSeriesMovies() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public double getRunningTimeAvg() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	//코드를 작성해주세요. 
+}

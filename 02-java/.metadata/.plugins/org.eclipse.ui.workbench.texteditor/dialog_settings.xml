@@ -13,7 +13,9 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
+		<item key="selection" value="idx"/>
 		<list key="findhistory">
+			<item value="idx"/>
 		</list>
 		<list key="replacehistory">
 		</list>
