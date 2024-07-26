@@ -1,0 +1,13 @@
+package com.ssafy.off.day08;
+
+import java.util.ArrayList;
+import java.util.List;
+
+
+public class SortTest {
+	public static void main(String[] args) {
+		List<Idol> list = new ArrayList<>();
+		
+		
+	}
+}

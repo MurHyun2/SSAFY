@@ -1,0 +1,20 @@
+package com.ssafy.off.day09;
+
+import java.io.File;
+
+class MyChectedException extends Exception {
+} // checked exception
+
+class MyUnChectedException extends RuntimeException {
+} // unchecked exception
+
+public class ExceptionTest02 {
+	public static void main(String[] args) {
+		try {
+			File f = new File();
+		} catch (MyChectedException e) {
+			// TODO: handle exception
+			System.out.println(1);
+		}
+	}
+}

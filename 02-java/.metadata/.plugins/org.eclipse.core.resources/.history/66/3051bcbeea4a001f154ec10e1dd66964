@@ -1,0 +1,12 @@
+import java.io.FileReader;
+
+public class Test04_CharacterStreamTest {
+	public static void main(String[] args) {
+		// 문자 스트림 : FileReader, FileWriter
+		try (FileReader reader = new FileReader("data/big_input.txt")){
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
+}

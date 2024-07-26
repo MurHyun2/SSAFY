@@ -1,0 +1,57 @@
+package com.ssafy.ws.day09.step2;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class MovieManagerImpl implements IMovieManager {
+	
+	private List<Movie> movieList = new ArrayList<>();
+	
+	private static IMovieManager instance = new MovieManagerImpl();
+	
+	private MovieManagerImpl() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	public static IMovieManager getInstance() {
+		return instance;
+	}
+
+	@Override
+	public void add(Movie movie) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Movie[] getList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Movie[] searchByTitle(String title) throws TitleNotFoundException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Movie[] getMovies() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public SeriesMovie[] getSeriesMovies() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public double getRunningTimeAvg() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
+	
+}

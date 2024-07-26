@@ -1,0 +1,12 @@
+package com.ssafy.ws.day09.step2;
+
+public class SeriesMovie extends Movie {
+
+	// 해당 시리즈 영화가 시리즈 중 몇번째 인지
+	private int seriesNum;
+
+	// 해당 시리즈 영화의 부제목
+	private String episode;
+
+
+}

@@ -1,0 +1,15 @@
+package com.ssafy.off.day10;
+
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
+
+public class Test10_SerializationTest3 {
+	public static void main(String[] args) {
+		try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("list.dat"))){
+			Object object = ois.readObject();
+			System.out.println(object);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
+}

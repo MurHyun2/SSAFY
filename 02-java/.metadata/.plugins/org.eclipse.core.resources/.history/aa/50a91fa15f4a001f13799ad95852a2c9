@@ -1,0 +1,15 @@
+package com.ssafy.ws.day09.step2;
+
+public class TitleNotFoundException extends RuntimeException{
+	private String title;
+
+	public TitleNotFoundException(String title) {
+		super(title);
+	}
+	
+	public String getTitle() {
+		return title;
+	}
+	
+	
+}

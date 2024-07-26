@@ -1,0 +1,13 @@
+package com.ssafy.off.day08;
+
+import java.util.List;
+
+public class Idol() {
+	
+}
+
+public class SortTest {
+	public static void main(String[] args) {
+		List<Idol>
+	}
+}

@@ -1,0 +1,79 @@
+package com.ssafy.ws.day09.step2;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class MovieManagerImpl implements IMovieManager {
+
+	private List<Movie> movieList = new ArrayList<>();
+
+	private static IMovieManager instance = new MovieManagerImpl();
+
+	private MovieManagerImpl() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public static IMovieManager getInstance() {
+		return instance;
+	}
+
+	@Override
+	public void add(Movie movie) {
+		movieList.add(movie);
+	}
+
+	@Override
+	public Movie[] getList() {
+		Movie[] list = new Movie[movieList.size()];
+		return movieList.toArray(list);
+	}
+
+	@Override
+	public Movie[] searchByTitle(String title) throws TitleNotFoundException {
+		int size = 0;
+		for (int i = 0; i < movieList.size(); i++) {
+			if (movieList.get(i).getTitle().equals(title))
+				size++;
+		}
+
+		if (size == 0) {
+			throw new TitleNotFoundException("일치하는 Title이 없습니다. 검색 Title : " + title);
+		}
+
+		Movie[] list = new Movie[size];
+		for (int i = 0; i < movieList.size(); i++) {
+			if (movieList.get(i).getTitle().equals(title))
+				list[i] = movieList.get(i);
+		}
+		return list;
+	}
+
+	@Override
+	public Movie[] getMovies() {
+		int size = 0;
+		for (int i = 0; i < movieList.size(); i++) {
+			if (!(movieList.get(i) instanceof SeriesMovie))
+				size++;
+		}
+
+		Movie[] list = new Movie[size];
+		for (int i = 0; i < movieList.size(); i++) {
+			if (!(movieList.get(i) instanceof SeriesMovie))
+				list[i] = movieList.get(i);
+		}
+		return list;
+	}
+
+	@Override
+	public SeriesMovie[] getSeriesMovies() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public double getRunningTimeAvg() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+}

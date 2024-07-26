@@ -1,0 +1,27 @@
+package com.ssafy.off.day10;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class Test04_FilterStreamTest {
+	public static void main(String[] args) {
+		// 문자 스트림 : FileReader, FileWriter
+		// 버퍼 기능을 추가해 보자 : BufferedReader, BufferedWriter
+		try (BufferedReader reader = new BufferedReader(new FileReader("data/big_input.txt"));
+				BufferedWriter writer = new BufferedWriter(new FileWriter("data/big_input_3.txt"))) {
+
+			String line; // BufferedReader은 입력을 줄 단위로 받는다.
+			while((line = reader.readLine()) != null) {
+				writer.write(line);
+				writer.newLine();
+			}
+			System.out.println("복사 끝!");
+
+		} catch (IOException e) {
+
+		}
+	}
+}

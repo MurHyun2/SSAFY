@@ -1,0 +1,14 @@
+package com.ssafy.off.day09;
+
+class MyChectedException extends Exception {
+} // checked exception
+
+class MyUnChectedException extends RuntimeException {
+} // unchecked exception
+
+public class ExceptionTest02 {
+	public static void main(String[] args) {
+		throw new MyUnChectedException();
+		throw new UnChectedException();
+	}
+}

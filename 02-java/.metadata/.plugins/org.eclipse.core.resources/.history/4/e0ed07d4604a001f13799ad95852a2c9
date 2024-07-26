@@ -1,0 +1,16 @@
+package com.ssafy.ws.day09.step2;
+
+public class TitleNotFoundException extends RuntimeException{
+	private String title;
+
+	public TitleNotFoundException(String title) {
+		this.title = title;
+		System.out.println(getTitle());
+	}
+	
+	public String getTitle() {
+		return "일치하는 Title이 없습니다. 검색 Title : " + this.title;
+	}
+	
+	
+}

@@ -1,0 +1,28 @@
+package com.ssafy.off.day10;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+public class Test02_ByteStreamTest {
+	public static void main(String[] args) throws IOException {
+		// byte stream을 이용해서 이미지를 입출력 해보자!
+		// stream => close() => finally
+		
+		FileInputStream fis = null;
+		FileOutputStream fos = null;
+		
+		try {
+			fis = new FileInputStream("data/dog.jpg");
+			fos = new FileOutputStream("data/dog-copy.jpg");
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			fis.close();
+			fos.close();
+		}
+		
+	}
+}
