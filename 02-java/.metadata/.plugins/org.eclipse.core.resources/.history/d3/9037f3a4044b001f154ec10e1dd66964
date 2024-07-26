@@ -1,0 +1,9 @@
+package com.ssafy.off.day10.ol;
+
+import java.io.FileInputStream;
+
+public class IOTest01 {
+	public static void main(String[] args) {
+		FileInputStream fis = new FileInputStream("data/dog.jpg");
+	}
+}

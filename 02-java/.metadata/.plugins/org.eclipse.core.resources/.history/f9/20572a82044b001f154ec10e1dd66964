@@ -1,0 +1,13 @@
+package com.ssafy.off.day10.ol;
+
+public class asd {
+	public static void main(String[] args) {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+		int T = Integer.parseInt(br.readLine());
+
+		for (int i = 0; i < T; i++) {
+			
+		}
+	}
+}

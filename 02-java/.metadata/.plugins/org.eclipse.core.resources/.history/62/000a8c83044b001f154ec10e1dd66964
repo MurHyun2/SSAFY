@@ -1,0 +1,6 @@
+package com.ssafy.off.day10.ol;
+
+public class IOTest01 {
+	public static void main(String[] args) {
+	}
+}
