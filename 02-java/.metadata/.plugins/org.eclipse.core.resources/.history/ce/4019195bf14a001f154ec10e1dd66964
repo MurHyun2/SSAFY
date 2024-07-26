@@ -1,0 +1,18 @@
+package com.ssafy.off.day10;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+
+public class Test08_SerializationTest {
+	public static void main(String[] args) {
+		//파일 -> 객체
+		try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("luna.dat"))){
+			Object obj = ois.readObject();
+			
+		} catch (IOException | ClassNotFoundException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+	}
+}

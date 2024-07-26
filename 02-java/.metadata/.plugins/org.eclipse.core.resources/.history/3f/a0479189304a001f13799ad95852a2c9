@@ -1,0 +1,32 @@
+package com.ssafy.off.day08;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
+public class SortTest {
+	static class IdolComparator implements Comparator<Idol> {
+
+		@Override
+		public int compare(Idol o1, Idol o2) {
+			return o1.fanCount - o2.fanCount;
+		}
+
+	}
+
+	public static void main(String[] args) {
+		List<Idol> list = new ArrayList<>();
+		list.add(new Idol("나카리나", 24, 100));
+		list.add(new Idol("가카리나", 24, 70));
+		list.add(new Idol("라카리나", 25, 10));
+		list.add(new Idol("다카리나", 24, 1000));
+		list.add(new Idol("마카리나", 26, 500));
+
+		Collections.sort(list, new IdolComparator());
+
+		for (Idol idol : list) {
+			System.out.println(idol);
+		}
+	}
+}

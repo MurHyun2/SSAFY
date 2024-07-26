@@ -1,0 +1,16 @@
+package com.ssafy.off.day10;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class Test05_InputTest {
+	public static void main(String[] args) throws NumberFormatException, IOException {
+		//InputStreamReader -> byte 데이터를 character 타입으로 변환.
+		//BufferedReader -> Buffer 기능 추가
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		int N = Integer.parseInt(br.readLine());
+		
+	}
+}

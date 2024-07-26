@@ -1,0 +1,65 @@
+package com.ssafy.off.day10;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileInputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Scanner;
+
+public class Test06_ScannerTest {
+	public static void main(String[] args) {
+		method01();
+		method03();
+	}
+
+	private static void method01() {
+		// 문자 스트림 : FileReader, FileWriter
+		// 버퍼 기능을 추가해 보자 : BufferedReader, BufferedWriter
+		try (BufferedReader reader = new BufferedReader(new FileReader("data/big_input.txt"))) {
+			long start = System.nanoTime();
+			String line; // BufferedReader은 입력을 줄 단위로 받는다.
+			while ((line = reader.readLine()) != null) {
+			}
+			System.out.println("복사 끝!");
+			long end = System.nanoTime();
+			System.out.println(end - start);
+		} catch (IOException e) {
+
+		}
+	}
+
+	private static void method02() {
+		// 문자 스트림 : FileReader, FileWriter
+		try (FileReader reader = new FileReader("data/big_input.txt");
+				FileWriter writer = new FileWriter("data/big_input_3.txt")) {
+			long start = System.nanoTime();
+			int c; // 문자 버퍼를 채운 갯수
+			char[] buffer = new char[10];
+			while ((c = reader.read(buffer)) != -1) {
+				writer.write(buffer, 0, c);
+			}
+			System.out.println("복사 끝!");
+			long end = System.nanoTime();
+			System.out.println(end - start);
+
+		} catch (IOException e) {
+
+		}
+	}
+
+	private static void method03() {
+		try (Scanner sc = new Scanner(new FileInputStream("data/big_input.txt"))) {
+			long start = System.nanoTime();
+
+			while (sc.hasNext()) {
+				int num = sc.nextInt();
+			}
+			long end = System.nanoTime();
+			System.out.println(end - start);
+		} catch (IOException e) {
+			// TODO: handle exception
+		}
+	}
+}

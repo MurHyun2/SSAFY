@@ -1,0 +1,15 @@
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class Test04_CharacterStreamTest {
+	public static void main(String[] args) {
+		// 문자 스트림 : FileReader, FileWriter
+		try (FileReader reader = new FileReader("data/big_input.txt");
+				FileWriter writer = new FileWriter("data/big_input_2.txt")) {
+
+		} catch (IOException e) {
+			
+		}
+	}
+}

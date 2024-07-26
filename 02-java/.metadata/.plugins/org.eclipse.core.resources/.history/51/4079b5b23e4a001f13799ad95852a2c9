@@ -1,0 +1,17 @@
+package com.ssafy.off.day09;
+
+class MyClose() {
+	
+}
+
+public class ExceptionTest01 {
+	public static void main(String[] args) {
+		try {
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		} finally { // 마지막에 자원 정리에 주로 사용
+			
+		}
+	}
+}

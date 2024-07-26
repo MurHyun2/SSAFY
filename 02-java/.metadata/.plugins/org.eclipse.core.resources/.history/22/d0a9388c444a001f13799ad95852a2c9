@@ -1,0 +1,29 @@
+package com.ssafy.off.day09;
+
+class MyCheckedException extends Exception {
+} // checked exception
+
+class MyUnCheckedException extends RuntimeException {
+} // unchecked exception
+
+class Car {
+	String name;
+	int price;
+	public Car(String name, int price) {
+		this.name = name;
+		this.price = price;
+	}
+	
+	
+}
+
+public class ExceptionTest02 {
+	public static void main(String[] args){
+		Car c1 = new Car("모닝", 1000);
+		Car c2 = new Car("테슬라", -1);
+		
+		// throw > 예외 발생 선언
+//		throw new MyCheckedException();
+//		throw new MyUnCheckedException();
+	}
+}

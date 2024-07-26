@@ -1,0 +1,26 @@
+package com.ssafy.off.day08;
+
+import java.util.Comparator;
+import java.util.List;
+
+public class Idol implements Comparator<Idol>{
+	String name;
+	int age;
+
+	public Idol(String name, int age) {
+		this.name = name;
+		this.age = age;
+	}
+
+	@Override
+	public String toString() {
+		return "Idol [name=" + name + ", age=" + age + "]";
+	}
+
+}
+
+public class SortTest {
+	public static void main(String[] args) {
+		List<Idol>
+	}
+}

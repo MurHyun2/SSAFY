@@ -1,0 +1,7 @@
+package com.ssafy.off.day10;
+
+public class Test09_SerializationTest2 {
+	public static void main(String[] args) {
+		
+	}
+}
