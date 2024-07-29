@@ -1,4 +1,4 @@
-package com.ssafy.day01;
+package com.ssafy.algo.swea;
 
 import java.io.BufferedReader;
 import java.io.IOException;

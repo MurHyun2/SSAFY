@@ -1,4 +1,4 @@
-package com.ssafy.algo;
+package com.ssafy.algo.beak;
 
 import java.io.BufferedReader;
 import java.io.IOException;
