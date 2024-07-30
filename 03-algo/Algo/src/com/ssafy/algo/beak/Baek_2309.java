@@ -33,6 +33,6 @@ public class Baek_2309 {
 
 		for (int i = 2; i < arr.length; i++) {
 			System.out.println(arr[i]);
-		}
+		} 
 	}
 }
