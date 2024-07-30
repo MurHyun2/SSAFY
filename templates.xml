@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><templates><template autoinsert="true" context="java" deleted="false" description="BufferedReader br" enabled="true" name="brn">	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));&#13;
+		&#13;
+		int T = Integer.parseInt(br.readLine());&#13;
+		&#13;
+		for (int i = 0; i &lt; T; i++) {&#13;
+			${cursor}&#13;
+		}</template></templates>

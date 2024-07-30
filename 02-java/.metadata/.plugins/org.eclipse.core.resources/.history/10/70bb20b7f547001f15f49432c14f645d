@@ -1,5 +1,0 @@
-package com.ssafy.ws.day06.step3;
-
-public class Teacher extends Person {
-
-}

@@ -16,17 +16,15 @@ public class Baek_2309 {
 			arr[i] = Integer.parseInt(br.readLine());
 			sum += arr[i];
 		}
-
-		int m = sum - 100;
-
+		loop:
 		for (int i = 0; i < arr.length; i++) {
 			for (int j = i + 1; j < arr.length; j++) {
 				int a = arr[i] + arr[j];
 
-				if (a == m) {
+				if (a == sum - 100) {
 					arr[i] = 0;
 					arr[j] = 0;
-					break;
+					break loop;
 				}
 			}
 		}

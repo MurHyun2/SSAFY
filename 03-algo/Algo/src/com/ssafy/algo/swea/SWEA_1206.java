@@ -12,14 +12,12 @@ public class SWEA_1206 {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
 		for (int i = 1; i <= 10; i++) {
-
 			int T = Integer.parseInt(br.readLine());
 			StringTokenizer st = new StringTokenizer(br.readLine());
 			List<Integer> list = new ArrayList<>();
 
-			for (int j = 0; j < T; j++) {
+			for (int j = 0; j < T; j++)
 				list.add(Integer.parseInt(st.nextToken()));
-			}
 
 			int count = 0;
 
@@ -29,7 +27,6 @@ public class SWEA_1206 {
 
 				if (val >= list.get(j + 1) && val >= list.get(j + 2) && val >= list.get(j - 1)
 						&& val >= list.get(j - 2)) {
-
 					int max = Integer.MIN_VALUE;
 
 					for (int k = 0; k < arr.length; k++) {
@@ -40,6 +37,7 @@ public class SWEA_1206 {
 					count += list.get(j) - max;
 				}
 			}
+			
 			System.out.println("#" + i + " " + count);
 		}
 	}
