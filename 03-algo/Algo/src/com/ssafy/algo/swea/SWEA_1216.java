@@ -7,13 +7,11 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.StringTokenizer;
 
 public class SWEA_1216 {
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		System.setIn(new FileInputStream("src\\com\\ssafy\\algo\\swea\\input\\1216.txt"));
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		StringTokenizer st = null;
 
 		// 입력
 		for (int i = 1; i <= 10; i++) {
@@ -65,7 +63,7 @@ public class SWEA_1216 {
 
 		}
 
-		// 세로행 계산
+		// 세로열 계산
 		for (int c = 0; c < map.length; c++) {
 
 			for (int r = 0; r < map[c].length; r++) {
