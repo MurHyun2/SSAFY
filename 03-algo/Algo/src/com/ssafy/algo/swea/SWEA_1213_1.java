@@ -8,7 +8,7 @@ import java.util.StringTokenizer;
 
 public class SWEA_1213_1 {
 	public static void main(String[] args) throws NumberFormatException, IOException {
-		System.setIn(new FileInputStream("src\\com\\ssafy\\algo\\swea\\input\\1213.txt"));
+		System.setIn(new FileInputStream("src/com/ssafy/algo/swea/input/1213.txt"));
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = null;
 

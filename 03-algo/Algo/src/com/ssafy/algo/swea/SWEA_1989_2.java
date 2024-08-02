@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
 
 public class SWEA_1989_2 {
 	public static void main(String[] args) throws NumberFormatException, IOException {
-		System.setIn(new FileInputStream("src\\com\\ssafy\\algo\\swea\\input\\1989.txt"));
+		System.setIn(new FileInputStream("src/com/ssafy/algo/swea/input/1989.txt"));
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
 		int T = Integer.parseInt(br.readLine());

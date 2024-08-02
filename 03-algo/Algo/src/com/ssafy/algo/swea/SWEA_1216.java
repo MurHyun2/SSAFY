@@ -10,7 +10,7 @@ import java.util.List;
 
 public class SWEA_1216 {
 	public static void main(String[] args) throws NumberFormatException, IOException {
-		System.setIn(new FileInputStream("src\\com\\ssafy\\algo\\swea\\input\\1216.txt"));
+		System.setIn(new FileInputStream("src/com/ssafy/algo/swea/input/1216.txt"));
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
 		// 입력

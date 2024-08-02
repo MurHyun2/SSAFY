@@ -39,6 +39,8 @@
 		<item key="WizardProjectsImportPage.STORE_CLOSE_CREATED_PROJECTS_ID" value="false"/>
 		<item key="WizardProjectsImportPage.STORE_HIDE_CONFLICTING_PROJECTS_ID" value="false"/>
 		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="C:\Users\SSAFY\Desktop\javaLive"/>
+			<item value="C:\SSAFY\workspace\SaffyDHL\javaLive"/>
 			<item value="C:\SSAFY\workspace\javaLive"/>
 			<item value="C:\SSAFY\workspace\javaLive\Java_Day06_다형성_추상클래스"/>
 			<item value="C:\SSAFY\workspace\javaLive\Java_Day05_상속"/>
@@ -47,7 +49,7 @@
 			<item value=""/>
 		</list>
 		<section name="ExternalProjectImportWizard.dialogBounds">
-			<item key="DIALOG_X_ORIGIN" value="1026"/>
+			<item key="DIALOG_X_ORIGIN" value="763"/>
 			<item key="DIALOG_Y_ORIGIN" value="371"/>
 			<item key="DIALOG_WIDTH" value="525"/>
 			<item key="DIALOG_HEIGHT" value="710"/>
