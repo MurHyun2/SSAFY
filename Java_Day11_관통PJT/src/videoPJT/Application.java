@@ -3,9 +3,13 @@ package videoPJT;
 public class Application {
 	public static void main(String[] args) {
 		
-		UserUI uui = new UserUI();
+		//main 
+		UserUI uUI = new UserUI();
+		uUI.start();
+		//videoUI
+		VideoUI vUI = new VideoUI();
+		vUI.start();
 		
-		uui.start();
 		
 	}
 

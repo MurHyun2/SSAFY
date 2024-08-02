@@ -3,10 +3,6 @@ package com.ssafy.algo.beak;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
 
 public class Baek_8958 {
 	public static void main(String[] args) throws IOException {

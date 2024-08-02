@@ -1,17 +1,1 @@
-[
-	{
-		"id": "test",
-		"password": "test", 
-		"nickname": "TEST" 
-	},
-	{
-		"id": "test01",
-		"password": "test", 
-		"nickname": "TEST" 
-	},
-	{
-		"id": "test02",
-		"password": "test", 
-		"nickname": "TEST" 
-	}
-]
+[{"id":"test","password":"1234","nickname":"test1234"},{"id":"test01","password":"1234","nickname":"test01"},{"id":"test02","password":"1234","nickname":"test02"}]

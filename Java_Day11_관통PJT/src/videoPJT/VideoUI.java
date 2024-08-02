@@ -5,10 +5,10 @@ import java.util.Scanner;
 
 public class VideoUI {
 	private Scanner sc = new Scanner(System.in);
-	
+
 	private VideoDao videoDao = VideoDaoImpl.getInstance();
 	private List<Video> videoList = videoDao.getList();
-	
+
 	public void start() {
 		while (true) {
 			int menuNo = menu();
@@ -45,8 +45,7 @@ public class VideoUI {
 			System.out.println(v.getNo() + " : " + v.getTitle());
 		}
 		System.out.println("--------------------------");
-		
-		
+
 		while (true) {
 			int menuNo = videoListMenu();
 			switch (menuNo) {
@@ -54,7 +53,7 @@ public class VideoUI {
 				System.out.print("영상 번호 선택 : ");
 				int no = Integer.parseInt(sc.nextLine());
 				getVideo(no);
-				//영상 상세 정보 메서드 호출
+				// 영상 상세 정보 메서드 호출
 			case 0:
 				start();
 			default:
@@ -62,18 +61,18 @@ public class VideoUI {
 			}
 		}
 	}
-	
+
 	private int videoListMenu() {
 		System.out.println("---------");
 		System.out.println("1. 영상상세");
 		System.out.println("0. 이전으로");
 		System.out.println("-----------");
 		System.out.print("메뉴 선택 : ");
-		
+
 		return Integer.parseInt(sc.nextLine());
 
 	}
-	
+
 	private void getVideo(int no) {
 		while (true) {
 			int menuNo = getVideoInfo(no);
@@ -90,33 +89,37 @@ public class VideoUI {
 			}
 		}
 	}
-	
+
 	private int getVideoInfo(int no) {
-		Video video = videoDao.getVideo(no);
-		List<VideoReview> vReviews = VideoReviewDaoImpl.getInstance().selectReview(no, null, null);
-		
-		System.out.println("-----------");
-		System.out.println("번호 : " + video.getNo());
-		System.out.println("제목 : " + video.getTitle());
-		System.out.println("운동 : " + video.getPart());
-		System.out.println("영상 URL : " + video.getUrl());
-		System.out.println("-----------");
-		if(vReviews != null) {
-			for (VideoReview rv : vReviews) {
-				System.out.println(rv.getReviewNo() + " " + rv.getNickName() + " " + rv.getContent());
-			}
-			
+		while (true) {
+
+			Video video = videoDao.getVideo(no);
+			List<VideoReview> vReviews = VideoReviewDaoImpl.getInstance().returnReview(no);
+
 			System.out.println("-----------");
+			System.out.println("번호 : " + video.getNo());
+			System.out.println("제목 : " + video.getTitle());
+			System.out.println("운동 : " + video.getPart());
+			System.out.println("영상 URL : " + video.getUrl());
+			System.out.println("-----------");
+			if (vReviews != null) {
+				for (VideoReview rv : vReviews) {
+					System.out.println(rv.getReviewNo() + " " + rv.getNickName() + " " + rv.getContent());
+				}
+
+				System.out.println("-----------");
+			}
+			System.out.println("1. 영상 재생");
+			System.out.println("2. 리뷰관리");
+			System.out.println("0. 이전으로");
+			System.out.println("-----------");
+			System.out.print("메뉴 선택 : ");
+
+			return Integer.parseInt(sc.nextLine());
+			
+	
 		}
-		System.out.println("1. 영상 재생");
-		System.out.println("2. 리뷰관리");
-		System.out.println("0. 이전으로");
-		System.out.println("-----------");
-		System.out.print("메뉴 선택 : ");
-		
-		return Integer.parseInt(sc.nextLine());
+
 	}
-	
-	
 
 }

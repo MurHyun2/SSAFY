@@ -18,7 +18,7 @@ public class Baek_2798_1 {
 
 		for (int i = 0; i < N; i++) {
 			arr[i] = Integer.parseInt(st.nextToken());
-		}
+		}	
 
 		int max = 0;
 

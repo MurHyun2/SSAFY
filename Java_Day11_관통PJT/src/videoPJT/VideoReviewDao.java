@@ -4,8 +4,11 @@ import java.util.List;
 
 public interface VideoReviewDao {
 
-	void insertReview(VideoReview review);
+	void insertReview(int videoNo, String nickname, String content);
 
-	List<VideoReview> selectReview(int videoNo, String nickname, String conten);
+	public void editReview(int videoNo, int reviewNo, String newReview);
+	
+	public List<VideoReview> returnReview(int videoNo);
 
+	public void deleteReview(int videoNo, int reviewNo);
 }
