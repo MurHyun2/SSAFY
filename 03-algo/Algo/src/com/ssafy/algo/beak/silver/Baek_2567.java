@@ -23,36 +23,39 @@ public class Baek_2567 {
 				for (int c = dc; c < dc + 10; c++) {
 					map[r][c] = 1;
 				}
-				
+
 			}
-			
+
 		}
-
-		// 사방탐색 
-		int result = 0;
-
-		int dx[] = { 1, -1, 0, 0 };
-		int dy[] = { 0, 0, 1, -1 };
 		
+		int result = getArea(map);
+		
+		System.out.println(result);
+	}
+	
+	static int getArea(int[][] map) {
+		int[] dx = { 1, -1, 0, 0 };
+		int[] dy = { 0, 0, 1, -1 };
+		int count = 0;
+
 		for (int r = 0; r < 100; r++) {
-			
+
 			for (int c = 0; c < 100; c++) {
-				if(map[r][c] == 1) {
-					
+				if (map[r][c] == 1) {
 					for (int i = 0; i < 4; i++) {
 						int nr = r + dx[i];
 						int nc = c + dy[i];
-						
-						if(nr < 0 || nc < 0 || nr >= 100 || nc >= 100 || map[nr][nc] == 0)
-							result++;
+
+						if (nr < 0 || nc < 0 || nr >= 100 || nc >= 100 || map[nr][nc] == 0) {
+							count++;
+						}
 					}
-					
+
 				}
 			}
-			
+
 		}
-
-		System.out.println(result);
+		
+		return count;
 	}
-
 }
