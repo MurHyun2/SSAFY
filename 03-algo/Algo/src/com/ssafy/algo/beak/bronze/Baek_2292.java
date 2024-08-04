@@ -1,4 +1,4 @@
-package com.ssafy.algo.beak;
+package com.ssafy.algo.beak.bronze;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -22,6 +22,7 @@ public class Baek_2292 {
 			num += add;
 			count++;
 		}
+			System.out.println(  );
 	}
 }
 
