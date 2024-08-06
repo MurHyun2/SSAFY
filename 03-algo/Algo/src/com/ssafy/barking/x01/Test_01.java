@@ -1,4 +1,4 @@
-package com.ssafy.barking.one;
+package com.ssafy.barking.x01;
 
 import java.io.BufferedReader;
 import java.io.IOException;

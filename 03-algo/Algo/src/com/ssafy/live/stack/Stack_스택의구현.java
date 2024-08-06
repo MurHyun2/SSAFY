@@ -1,4 +1,4 @@
-package com.ssafy.live.day05;
+package com.ssafy.live.stack;
 
 import java.util.Stack;
 
