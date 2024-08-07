@@ -23,7 +23,7 @@ public class Baek_17413_ReTry {
 					sb.append(input.charAt(i));
 					i++;
 				}
-				
+
 				sb.append(input.charAt(i));
 			} else if (input.charAt(i) == ' ') {
 				while (!stack.isEmpty())
