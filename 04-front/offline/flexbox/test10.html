@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Insert title here</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .flex-container {
+            width: 300px;
+            height: 300px;
+            background: silver;
+            border: 5px solid black;
+            color: white;
+            display: flex;
+            width: 600px;
+            align-items: center;
+        }
+        .flex-container > div {
+            font-size: 30px;
+            text-align: center;
+            background: #112233;
+            width: 80px;
+            height: 80px;
+            margin: 2px;
+            /*
+            flex : flex-grow, flex-shrink, flex-basis
+            */
+            /* 만약, 아이템이 컨테이너의 크기보다 커졌다면 컨테이너의 크기에 맞게 줄어들어라.. */
+            flex: 0 1 200px;
+            /* 아이템의 크기를 늘리지도 줄이지도 않는다. */
+            flex: 0 0 200px;
+            flex: 1 0 80px;
+        }
+        .self{
+          align-self: flex-start;
+          align-self: flex-end;
+        }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="flex-container">
+        <div>1</div>
+        <div>2</div>
+        <div class="self">3</div>
+        <div>4</div>
+        <div>5</div>
+      </div>
+  </body>
+</html>
