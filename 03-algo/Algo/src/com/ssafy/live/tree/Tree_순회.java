@@ -22,7 +22,7 @@ public class Tree_순회 {
 		inoreder(root * 2 + 1);
 	}
 
-	// 후위 순회 L->V->R
+	// 후위 순회 L->R->V
 	static public void postoreder(int root) {
 		if (root >= tree.length || tree[root] == 0)
 			return;

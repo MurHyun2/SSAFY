@@ -1,4 +1,4 @@
-package com.ssafy.offline.unknown;
+package com.ssafy.offline.algo;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -58,7 +58,7 @@ Output 값
 #4 1
 #5 8
 */
-public class Test01 {
+public class 대전캠퍼스야경LED {
 
 	static int n;
 	static int[] arr;

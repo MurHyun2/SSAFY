@@ -13,7 +13,7 @@ public class Baek_2527 {
 			st = new StringTokenizer(br.readLine().trim());
 
 			int[][][] arr = new int[2][2][2];
-			
+
 			for (int j = 0; j < 2; j++) {
 				for (int k = 0; k < 2; k++) {
 					for (int l = 0; l < 2; l++) {
@@ -23,19 +23,6 @@ public class Baek_2527 {
 			}
 			
 			
-			
-//			if(a )
-//			if (x == p && y == q) {
-//				System.out.println("c");
-//			} else if (x == p && y < q || y == q && x < p) {
-//				System.out.println("d");
-//			} else if (x == p || y == q) {
-//				System.out.println("b");
-//			} else if (x < p && y < q) {
-//				System.out.println("d");
-//			} else if (x > p && y > q) {
-//				System.out.println("a");
-//			}
 		}
 	}
 }
