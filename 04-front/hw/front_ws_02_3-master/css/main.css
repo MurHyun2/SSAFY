@@ -1,0 +1,86 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  height: 60px;
+  background-color: gray;
+  justify-content: space-between;
+}
+
+.top {
+  margin-left: 15px;
+}
+
+header > nav > ul > li {
+  display: inline;
+  margin-right: 15px;
+}
+
+/* body area */
+main > section > .movie-list {
+  margin: 15px;
+}
+
+main {
+  display: flex;
+}
+
+main > .movie-like-area {
+  width: 300px;
+}
+
+main > section > .movie-info-area {
+  flex-grow: 1;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+main > section > .movie-info-area > li {
+  list-style: none;
+  margin: 20px;
+
+}
+
+main > section > .movie-info-area > li > img {
+  width: 250px;
+  height: 356px;
+}
+
+main > section > .movie-info-area > li > .movie-info-desc-area {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+main > section > .movie-info-area > li > .movie-info-desc-area > .movie-info-desc-text-area > .title{
+    border-bottom: 1px solid;
+}
+  
+main > section > .movie-info-area > li > .movie-info-desc-area > button {
+  position: absolute;
+  right: 30px;
+  top: 30px;
+}
+
+/* footer */
+footer {
+  display: flex;
+  align-items: center;
+  height: 60px;
+  background-color: gray;
+  justify-content: center;
+}
+
+footer > ul > li {
+  display: inline;
+  margin: 15px;
+}
+
+footer > ul > li:last-child {
+  color: white;
+}
