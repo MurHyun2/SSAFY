@@ -1,11 +1,16 @@
-const btn = document.querySelectorAll(".button");
-console.log(btn);
+const btn = document.querySelectorAll(".btn");
 
-btn.onclick = function () {
-  const title = this.document.querySelector(".title");
-  const genre = this.document.querySelector(".genre");
-  const director = this.document.querySelector(".director");
-  const runningTime = this.document.querySelector(".runningTime");
-  
-  console.log(title);
-};
+btn.forEach(function (button) {
+  button.onclick = function () {
+    const movieInfo = this.closest("li");
+    const title = movieInfo.querySelector(".title").textContent;
+    const genre = movieInfo.querySelector(".genre").textContent;
+    const director = movieInfo.querySelector(".director").textContent;
+    const runningTime = movieInfo.querySelector(".runningTime").textContent;
+
+    console.log(title);
+    console.log(genre);
+    console.log(director);
+    console.log(runningTime);
+  };
+});
