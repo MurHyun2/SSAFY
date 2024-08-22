@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let member = {
+        // const member -> 값이 바뀌면 안되지만 const member은 member 객체의
+        // 주소값을 가지기 때문에 id를 변경해도 값이 바뀌는게 아니다.
+        // 하지만 member = {}; 로 재할당은 불가능 error
+        id: "sonny",
+        name: "흥민",
+      };
+      member.id = "abcde";
+      let member2 = member;
+      // member2가 member의 주소를 가진다. -> member2의 값을 변경하면 member의 값도 같이 변경
+
+      member.addr = "영국 런던 지하 서쪽동"; // 기존에 없던 값도 추가가 가능. 값이 있다면 수정
+      member["email"] = "sonny@saffy.com"; // [ ]로도 추가 가능.
+      member["home-page"] = "sonny2@saffy.com"; // 특수문자가 들어갈 경우 이 방식을 써야한다.
+      // ex) member.home-page = "sonny2@saffy.com"; -> 불가능 home -(minus) page 로 해석 된다.
+
+      delete member.addr; // id 삭제
+      console.dir(member);
+    </script>
+  </body>
+</html>

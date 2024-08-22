@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function fn(msg) {
+        console.log("fn 호출되었음", msg);
+      }
+
+      function callFn(callback) {
+        console.log(callback);
+        callback("Hello");
+      }
+      callFn(fn); // fn() 함수
+      // callFn(fn()); // fn() 함수의 return -> 값 undefined
+      // callFn(1);
+      // callFn([1, 2]);
+      // callFn(function() {});
+
+      function fn2() {
+        return function(msg) {
+          console.log("return된 함수 실행", msg);
+        };
+      }
+      let returnFn = fn2();
+      console.log(returnFn);
+      returnFn("Hello");
+      
+      // fn2()의 반환값이 함수니까 해당 함수를 실행
+      fn2()("Hello2");
+    </script>
+  </body>
+</html>

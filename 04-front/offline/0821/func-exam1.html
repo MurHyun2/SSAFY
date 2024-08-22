@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function fn() {
+      console.log("선언식 함수");
+    }
+
+    // 변수에 담아서 사용 : 표현식 함수. -> 선언된 이후에 사용이 가능하다. -> 호이스팅 불가능
+    var fn2 = function() {
+      // console.log("표현식 함수");
+    }
+    fn(); // "선언식 함수"
+    fn2(); // x
+    console.log(fn2); // ƒ () {}
+    console.log(fn2()); // undefined
+  </script>
+</body>
+</html>

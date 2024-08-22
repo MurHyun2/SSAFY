@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body > div {
+        background: yellow;
+      }
+      div.class1 {
+        background: red;
+      }
+      .class1 {
+        background: blue;
+        /* div.class1 이 11점으로 우선순위가 더 높으므로(11 vs 10) 해당 css는 적용되지 않음 */
+      }
+      #id1 {
+        background: purple;
+      }
+
+      body .class1 {
+        background: green !important;
+        /* 사용 비추천 */
+      }
+
+      body div.class1 {
+        background: pink;
+      }
+    </style>
+  </head>
+  <body>
+    <div>우선순위 연습하기</div>
+    <div class="class1" id="id1">!important > inline > #id > .class > element > *</div>
+    <!-- 10000 > 1000 > 100 > 10 > 1 > 0.1 -->
+    <div>동일한 우선순위일 경우 나중에 선언된 것으로 적용</div>
+  </body>
+</html>

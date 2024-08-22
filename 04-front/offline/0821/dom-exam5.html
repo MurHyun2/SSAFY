@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <button>추가</button>
+    </div>
+    <div id="view"></div>
+
+    <script>
+      // <button onclick="doAdd()">추가</button>
+      // 해당 방식은 권장하지 않음 -> 코드 관리가 어렵기 때문에 script 단에서 바로 접근하도록 해주는게 좋음.
+      const btn = document.querySelector("button");
+
+      btn.onclick = function () {
+        alert("click 성공!");
+      };
+
+      // 마지막에 등록한 이벤트만 출력함.
+      // btn.onclick = function() {
+      //   alert("click 성공 2");
+      // };
+
+      // addEventListener -> 표준 이벤트 모델
+      // addEventListener 을 사용하면 기존 이벤트를 유지하고 다른 이벤트를 추가할 수 있음.
+      btn.addEventListener("click", function () {
+        alert("click 성공! 222");
+      });
+
+      btn.addEventListener("click", function () {
+        alert("click 성공! 333");
+      });
+
+      btn.addEventListener("click", function () {
+        const viewEl = document.getElementById("view");
+        const imgEl = document.createElement("img");
+        imgEl.setAttribute("src", "dog.jpg");
+        imgEl.setAttribute("width", "200px");
+        viewEl.appendChild(imgEl);
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function info() {
+        console.dir(this);
+      }
+      let m1 = {
+        id: "박보검"
+      };
+      let m2 = {
+        id: "홍준표"
+      }
+      m1.memberInfo = info; // 함수의 주소값을 받음
+      m2.memberInfo = info;
+      // m1.memberInfo = info(); 함수를 호출한 결과값(return)을 받음 -> return이 없으니 undefined
+      m1.memberInfo(); // info의 주솟값으로 함수를 실행 함수에서의 this는 호출한 객체를 가르키니 m1 출력
+      m2.memberInfo();
+      info(); // Window가 호출된다. == window.info(); (default가 window 객체)
+    </script>
+  </body>
+</html>

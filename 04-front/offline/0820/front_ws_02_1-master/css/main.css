@@ -1,0 +1,91 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  height: 60px;
+  background-color: #03dbfc;
+  justify-content: space-between;
+}
+
+.logo {
+  margin-left: 20px;
+}
+
+header > nav > a {
+  margin-right: 10px;
+}
+
+header > nav > a:last-child{
+  margin-right: 20px;
+}
+
+#searchBox > input{
+  width: 300px;
+  height: 30px;
+  padding-left: 10px;
+  font-size: 1.1em;
+}
+
+.btn {
+  width: 70px;
+  height: 34px;
+  font-weight: bold;
+}
+
+main > h1 {
+  font-size: 1.6rem;
+}
+
+.fs-2 {
+  font-size: 1.2rem;
+}
+
+main > .content {
+  display: flex;
+}
+
+main > .content > .car-like-area {
+  width: 300px;
+}
+
+main > .content > .car-info-area {
+  flex-grow: 1;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+main > .content > .car-info-area > li{
+  list-style: none;
+  width: 600px;
+  height: 500px;
+}
+
+main > .content > .car-info-area > li > img{
+  width: 400px;
+}
+
+main > .content > .car-info-area > li > .car-info-desc-area {
+  position: relative;
+}
+
+main > .content > .car-info-area > li > .car-info-desc-area > button{
+  position: absolute;
+  right: 30px;
+  top: 30px;
+}
+
+footer {
+  display: flex;
+  align-items: center;
+  height: 60px;
+  background-color: #03dbfc;
+  justify-content: center;
+}
+
+footer > nav > a {
+  margin: 20px;
+}

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // const isReg = confirm("등록하시겠습니까?"); // True False
+      // console.log("isReg", isReg);
+      // if(isReg) {
+      //   alert("등록되었습니다.") // 경고창
+      // };
+
+      // let food = prompt("오늘 점심은 무얼 먹을까?") // 입력
+      // console.log("food", food);
+
+      // parseInt는 문자열 처음부터 시작해, 숫자로 바꿀수 있는 부분까지만 바꾸고 종료.
+      let num = parseInt("1234abcde");
+      console.log(num); // 1234
+
+      setTimeout(function () {
+        console.log("함수 호출 됌!");
+      }, 3000);
+      console.log("call-End");
+      // setTimeout 실행할때까지 기다리지 않고, 다음 순서로 진행함. -> 비동기 방식
+      // call-End
+      // 함수 호출 됌!
+
+      setInterval(() => {
+        console.log("함수 호출 됌!");
+      }, 5000);
+      console.log("call-End");
+      // setInterval은 지정한 시간마다 계속 호출 : ex) 자동 새로고침 등등
+    </script>
+  </body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>1번</div>
+    <div>2번</div>
+    <div>3번</div>
+    <script>
+      // const divList = document.getElementsByTagName("div");
+      const divList = document.querySelectorAll("div");
+      for(let i = 0; i < divList.length; i++) {
+        console.log(divList[i].innerText);
+      }
+        
+      // const divList2 = document.getElementsByClassName("a");
+      const divList2 = document.querySelectorAll("div");
+    </script>
+      
+      <div>1번</div>
+      <div class="a">2번</div>
+      <div class="b">3번</div>
+  </body>
+</html>
