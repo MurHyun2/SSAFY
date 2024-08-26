@@ -1,0 +1,27 @@
+1.
+public class Test {
+	public static void main(String[] args) {
+		LinkedList<Integer> linked = new LinkedList<>();
+
+		linked.addFirst(1);
+		linked.add(1, 2);
+		linked.add(2, 5);
+		linked.add(2, 3);
+		linked.add(3, 4);
+		linked.addLast(6);
+		// 1, 2, 3, 4, 5, 6
+
+		linked.remove(1);
+		linked.remove(2);
+		linked.removeLast();
+		// 1, 3, 5
+	}
+}
+
+2.
+배열은 선언한 크기를 변환할 수 없지만, 연결 리스트는 값을 넣을때 크기가 늘어난다.
+배열은 기존 값들을 유지한 채 중간에 새로운 값을 추가하고자 한다면, 새로운 배열을 만들어 이전 값들을 모두 넣어줘야 하지만
+연결 리스트의 경우 이전값의 링크 노드와 다음값의 링크 노드만 수정해주면 된다.
+삭제의 경우 또한 배열의 경우 새로운 배열을 만들어 해당 값을 삭제해야 하지만,
+연결 리스트의 경우 삭제할 노드가 가지고 있는 다음 링크 노드의 값만 이전 링크 노드와 연결해주면 되므로 시간 복잡도가 낮다.
+특정 인덱스의 값을 출력할 경우 배열이 연결 리스트 보다 속도가 빠르다. 연결 리스트의 경우 앞의 노드에 연결 노드를 타고가서 해당 노드까지 가야 되기 때문이다. 
