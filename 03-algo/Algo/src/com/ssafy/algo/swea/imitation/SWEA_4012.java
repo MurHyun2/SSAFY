@@ -1,31 +1,34 @@
-package com.ssafy.algo.swea.d3;
+package com.ssafy.algo.swea.imitation;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.StringTokenizer;
 
 public class SWEA_4012 {
 
-	static int N, R, avg;
+	static int N, min;
 	static int[][] arr;
-	static int[][] sel;
+	static boolean[] visited;
 
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		System.setIn(new FileInputStream("src/com/ssafy/algo/swea/input/4012.txt"));
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		StringTokenizer st;
+		
 		int T = Integer.parseInt(br.readLine().trim());
 
 		for (int tc = 1; tc <= T; tc++) {
 			st = new StringTokenizer(br.readLine().trim());
 
 			N = Integer.parseInt(st.nextToken());
-			R = 2;
 			arr = new int[N][N];
-			sel = new int[N][N];
-			avg = Integer.MAX_VALUE;
+			visited = new boolean[N];
+			min = Integer.MAX_VALUE;
 
 			for (int r = 0; r < N; r++) {
 				st = new StringTokenizer(br.readLine().trim());
@@ -35,30 +38,43 @@ public class SWEA_4012 {
 				}
 			}
 
-			comb();
+			comb(0, 0);
 
-//			System.out.printf("#%d %d\n", tc, cnt);
+			bw.append("#" + tc + " " + min);
+			bw.newLine();
 		}
 
+		bw.flush();
+		bw.close();
 	}
 
-	static void comb() {
-		for (int i = 0; i <= N - R + 0; i++) {
-
-			for (int j = i + 1; j <= N - R + 1; j++) {
-				int sum = 0;
-				sum += arr[i][j];
-				sum += arr[j][i];
-				sel[i][j] = sum;
-			}
+	static void comb(int start, int depth) {
+		if (depth == N / 2) {
+			calMin();
+			return;
 		}
+
+		for (int i = start; i < N; i++) {
+			visited[i] = true;
+			comb(i + 1, depth + 1);
+			visited[i] = false;
+		}
+	}
+
+	static void calMin() {
+		int a = 0;
+		int b = 0;
 
 		for (int i = 0; i < N; i++) {
 			for (int j = 0; j < N; j++) {
-				if (sel[i][j] != 0) {
-					
+				if (visited[i] && visited[j]) {
+					a += arr[i][j];
+				} else if (!visited[i] && !visited[j]) {
+					b += arr[i][j];
 				}
 			}
 		}
+
+		min = Math.min(min, Math.abs(a - b));
 	}
 }
