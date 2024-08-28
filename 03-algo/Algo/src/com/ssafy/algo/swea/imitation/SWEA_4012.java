@@ -19,7 +19,7 @@ public class SWEA_4012 {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		StringTokenizer st;
-		
+
 		int T = Integer.parseInt(br.readLine().trim());
 
 		for (int tc = 1; tc <= T; tc++) {
@@ -55,15 +55,17 @@ public class SWEA_4012 {
 		}
 
 		for (int i = start; i < N; i++) {
-			visited[i] = true;
-			comb(i + 1, depth + 1);
-			visited[i] = false;
+			if (!visited[i]) {
+				visited[start] = true;
+				comb(i + 1, depth + 1);
+				visited[start] = false;
+			}
 		}
+
 	}
 
-	static void calMin() {
-		int a = 0;
-		int b = 0;
+	private static void calMin() {
+		int a = 0, b = 0;
 
 		for (int i = 0; i < N; i++) {
 			for (int j = 0; j < N; j++) {
@@ -75,6 +77,8 @@ public class SWEA_4012 {
 			}
 		}
 
-		min = Math.min(min, Math.abs(a - b));
+		int sum = Math.abs(a - b);
+
+		min = Math.min(min, sum);
 	}
 }
