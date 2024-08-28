@@ -25,22 +25,22 @@ public class Hello_0828 {
 	}
 
 	private static void 조합재귀(int depth, int selectIdx) {
-		if(selectIdx == R) {
+		if (selectIdx == R) {
 			for (int i = 0; i < R; i++) {
 				System.out.print(sel[i] + " ");
 			}
 			System.out.println();
 			return;
 		}
-		
-		if(depth == N)
+
+		if (depth == N)
 			return;
-		
+
 		sel[selectIdx] = data[depth];
 		조합재귀(depth + 1, selectIdx + 1);
-		
+
 		조합재귀(depth + 1, selectIdx);
-		
+
 	}
 
 	private static void 조합반복재귀(int start, int depth) {
