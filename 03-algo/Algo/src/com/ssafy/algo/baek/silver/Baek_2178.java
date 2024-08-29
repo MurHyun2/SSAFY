@@ -18,6 +18,34 @@ public class Baek_2178 {
 
 	static int min;
 
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st = new StringTokenizer(br.readLine().trim());
+
+		N = Integer.parseInt(st.nextToken());
+		M = Integer.parseInt(st.nextToken());
+		arr = new int[N][M];
+
+		for (int i = 0; i < N; i++) {
+			char c[] = br.readLine().toCharArray();
+
+			for (int j = 0; j < M; j++) {
+				arr[i][j] = c[j] - '0';
+			}
+		}
+
+		visited = new boolean[N][M];
+		visited[0][0] = true;
+
+//		min = Integer.MAX_VALUE;
+//		dfs(0, 0, 1);
+//		System.out.println(min);
+
+		bfs(0, 0);
+		System.out.println(arr[N - 1][M - 1]);
+
+	}
+
 	static void bfs(int r, int c) {
 		q.add(new int[] { r, c });
 
@@ -57,34 +85,6 @@ public class Baek_2178 {
 				visited[nr][nc] = false;
 			}
 		}
-
-	}
-
-	public static void main(String[] args) throws IOException {
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		StringTokenizer st = new StringTokenizer(br.readLine().trim());
-
-		N = Integer.parseInt(st.nextToken());
-		M = Integer.parseInt(st.nextToken());
-		arr = new int[N][M];
-
-		for (int i = 0; i < N; i++) {
-			char c[] = br.readLine().toCharArray();
-
-			for (int j = 0; j < M; j++) {
-				arr[i][j] = c[j] - '0';
-			}
-		}
-
-		visited = new boolean[N][M];
-		visited[0][0] = true;
-
-//		min = Integer.MAX_VALUE;
-//		dfs(0, 0, 1);
-//		System.out.println(min);
-
-		bfs(0, 0);
-		System.out.println(arr[N - 1][M - 1]);
 
 	}
 }

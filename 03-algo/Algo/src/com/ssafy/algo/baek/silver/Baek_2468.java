@@ -15,26 +15,6 @@ public class Baek_2468 {
 	static int[] dc = { 0, 0, -1, 1 };
 	static boolean[][] visited;
 
-	static void bfs(int r, int c, int height) {
-		Queue<int[]> q = new LinkedList<>();
-		q.add(new int[] { r, c });
-		visited[r][c] = true;
-
-		while (!q.isEmpty()) {
-			int[] now = q.poll();
-
-			for (int i = 0; i < 4; i++) {
-				int nr = now[0] + dr[i];
-				int nc = now[1] + dc[i];
-
-				if (nr >= 0 && nc >= 0 && nr < N && nc < N && !visited[nr][nc] && arr[nr][nc] > height) {
-					visited[nr][nc] = true;
-					q.add(new int[] { nr, nc });
-				}
-			}
-		}
-	}
-
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st;
@@ -74,4 +54,25 @@ public class Baek_2468 {
 
 		System.out.println(maxCom);
 	}
+
+	static void bfs(int r, int c, int height) {
+		Queue<int[]> q = new LinkedList<>();
+		q.add(new int[] { r, c });
+		visited[r][c] = true;
+
+		while (!q.isEmpty()) {
+			int[] now = q.poll();
+
+			for (int i = 0; i < 4; i++) {
+				int nr = now[0] + dr[i];
+				int nc = now[1] + dc[i];
+
+				if (nr >= 0 && nc >= 0 && nr < N && nc < N && !visited[nr][nc] && arr[nr][nc] > height) {
+					visited[nr][nc] = true;
+					q.add(new int[] { nr, nc });
+				}
+			}
+		}
+	}
+
 }
