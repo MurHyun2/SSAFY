@@ -5,9 +5,13 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.StringTokenizer;
+import java.util.TreeSet;
 
-public class Baek_15651 {
+public class Baek_15664 {
 	static int N, M;
 	static int[] arr, sel;
 	static BufferedWriter bw;
@@ -25,29 +29,39 @@ public class Baek_15651 {
 		arr = new int[N];
 		sel = new int[M];
 
+		st = new StringTokenizer(br.readLine().trim());
+
 		for (int i = 0; i < N; i++) {
-			arr[i] = i + 1;
+			arr[i] = Integer.parseInt(st.nextToken());
 		}
 
-		perm(0);
+		Arrays.sort(arr);
+
+		comb(0, 0);
 
 		bw.write(sb.toString());
 		bw.flush();
 		bw.close();
 	}
 
-	private static void perm(int depth) {
-		if(depth == M) {
+	private static void comb(int now, int depth) {
+		if (depth == M) {
 			for (int i : sel) {
 				sb.append(i).append(" ");
 			}
 			sb.append("\n");
 			return;
 		}
-		
-		for (int i = 0; i < N; i++) {
-			sel[depth] = arr[i];
-			perm(depth + 1);
+
+		int prev = 0;
+
+		for (int i = now; i < N; i++) {
+			if (prev != arr[i]) {
+				prev = arr[i];
+				sel[depth] = arr[i];
+				comb(i + 1, depth + 1);
+			}
 		}
 	}
+
 }

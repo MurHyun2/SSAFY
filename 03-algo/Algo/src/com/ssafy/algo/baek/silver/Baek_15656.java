@@ -5,9 +5,10 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.util.Arrays;
 import java.util.StringTokenizer;
 
-public class Baek_15651 {
+public class Baek_15656 {
 	static int N, M;
 	static int[] arr, sel;
 	static BufferedWriter bw;
@@ -24,10 +25,15 @@ public class Baek_15651 {
 		M = Integer.parseInt(st.nextToken());
 		arr = new int[N];
 		sel = new int[M];
+		
+		st = new StringTokenizer(br.readLine().trim());
+
 
 		for (int i = 0; i < N; i++) {
-			arr[i] = i + 1;
+			arr[i] = Integer.parseInt(st.nextToken());
 		}
+
+		Arrays.sort(arr);
 
 		perm(0);
 

@@ -2,7 +2,7 @@ package com.ssafy.offline.daily;
 
 import java.util.Arrays;
 
-public class QuickSort_829 {
+public class QuickSort_0829 {
 
 	static int[] arr = { 7, 5, 13, 2, 79, 12, 35, 42 };
 	static int N = arr.length; // 배열의 길이

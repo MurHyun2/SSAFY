@@ -5,11 +5,16 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.StringTokenizer;
+import java.util.TreeSet;
 
-public class Baek_15651 {
+public class Baek_15663 {
 	static int N, M;
 	static int[] arr, sel;
+	static boolean[] visited;
 	static BufferedWriter bw;
 	static StringBuilder sb;
 
@@ -24,13 +29,19 @@ public class Baek_15651 {
 		M = Integer.parseInt(st.nextToken());
 		arr = new int[N];
 		sel = new int[M];
+		visited = new boolean[N];
+
+		st = new StringTokenizer(br.readLine().trim());
+
 
 		for (int i = 0; i < N; i++) {
-			arr[i] = i + 1;
+			arr[i] = Integer.parseInt(st.nextToken());
 		}
 
-		perm(0);
+		Arrays.sort(arr);
 
+		perm(0);
+		
 		bw.write(sb.toString());
 		bw.flush();
 		bw.close();
@@ -38,16 +49,24 @@ public class Baek_15651 {
 
 	private static void perm(int depth) {
 		if(depth == M) {
-			for (int i : sel) {
+			for (Integer i : sel) {
 				sb.append(i).append(" ");
 			}
 			sb.append("\n");
 			return;
 		}
 		
-		for (int i = 0; i < N; i++) {
-			sel[depth] = arr[i];
-			perm(depth + 1);
+		int prev = 0;
+		
+		for (int i = 0; i < arr.length; i++) {
+			if(!visited[i] && prev != arr[i]) {
+				visited[i] = true;
+				sel[depth] = arr[i];
+				prev = arr[i];
+				perm(depth + 1);
+				visited[i] = false;
+			}
 		}
 	}
+
 }

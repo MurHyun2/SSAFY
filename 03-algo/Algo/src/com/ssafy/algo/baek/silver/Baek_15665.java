@@ -5,9 +5,10 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.util.Arrays;
 import java.util.StringTokenizer;
 
-public class Baek_15651 {
+public class Baek_15665 {
 	static int N, M;
 	static int[] arr, sel;
 	static BufferedWriter bw;
@@ -25,9 +26,13 @@ public class Baek_15651 {
 		arr = new int[N];
 		sel = new int[M];
 
+		st = new StringTokenizer(br.readLine().trim());
+
 		for (int i = 0; i < N; i++) {
-			arr[i] = i + 1;
+			arr[i] = Integer.parseInt(st.nextToken());
 		}
+
+		Arrays.sort(arr);
 
 		perm(0);
 
@@ -37,17 +42,23 @@ public class Baek_15651 {
 	}
 
 	private static void perm(int depth) {
-		if(depth == M) {
+		if (depth == M) {
 			for (int i : sel) {
 				sb.append(i).append(" ");
 			}
 			sb.append("\n");
 			return;
 		}
-		
+
+		int prev = 0;
+
 		for (int i = 0; i < N; i++) {
-			sel[depth] = arr[i];
-			perm(depth + 1);
+			if (prev != arr[i]) {
+				prev = arr[i];
+				sel[depth] = arr[i];
+				perm(depth + 1);
+			}
 		}
 	}
+
 }
