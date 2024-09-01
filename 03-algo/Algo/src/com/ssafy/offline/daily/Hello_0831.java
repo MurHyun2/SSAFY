@@ -42,9 +42,7 @@ public class Hello_0831 {
 			return;
 		}
 
-		for (
-
-				int i = 0; i < N; i++) {
+		for (int i = 0; i < N; i++) {
 			if (!visited[i]) {
 				visited[i] = true;
 				sel[depth] = arr[i];
