@@ -1,7 +1,5 @@
 package com.ssafy.offline.daily;
 
-import java.util.Arrays;
-
 public class Hello_0831 {
 	static int N, R;
 	static int[] arr, sel;
