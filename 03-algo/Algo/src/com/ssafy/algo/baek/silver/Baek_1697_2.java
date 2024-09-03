@@ -10,7 +10,7 @@ import java.util.StringTokenizer;
 public class Baek_1697_2 {
 
 	static int N, K;
-	static int[] dist = new int[100001];;
+	static int[] arr;
 
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -19,27 +19,29 @@ public class Baek_1697_2 {
 		N = Integer.parseInt(st.nextToken());
 		K = Integer.parseInt(st.nextToken());
 
+		arr = new int[100_001];
+
 		bfs();
 
-		System.out.println(dist[K] - 1);
+		System.out.println(arr[K] - 1);
 	}
 
-	static void bfs() {
+	private static void bfs() {
 		Queue<Integer> q = new LinkedList<>();
 		q.add(N);
-		dist[N] = 1;
+		arr[N] = 1;
 
 		while (!q.isEmpty()) {
 			int now = q.poll();
 
-			int nextPosition[] = { now - 1, now + 1, now * 2 };
+			int[] nr = { now - 1, now + 1, now * 2 };
 
-			for (int next : nextPosition) {
-				if (next >= 0 && next < 100001 && dist[next] == 0) {
-					dist[next] = dist[now] + 1;
-					q.add(next);
+			for (int i = 0; i < 3; i++) {
+				if (nr[i] >= 0 && nr[i] < 100_001 && arr[nr[i]] == 0) {
+					arr[nr[i]] = arr[now] + 1;
+					q.add(nr[i]);
 
-					if (next == K)
+					if (nr[i] == K)
 						return;
 				}
 			}

@@ -11,12 +11,10 @@ public class Baek_2178_2 {
 
 	static int N, M;
 	static int[][] arr;
-	static boolean[][] visited;
 	static Queue<int[]> q = new LinkedList<>();
-	static int[] dr = { 1, -1, 0, 0 };
-	static int[] dc = { 0, 0, 1, -1 };
-
-	static int min;
+	static int[] dr = { -1, 1, 0, 0 };
+	static int[] dc = { 0, 0, -1, 1 };
+	static boolean[][] visited;
 
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -25,24 +23,24 @@ public class Baek_2178_2 {
 		N = Integer.parseInt(st.nextToken());
 		M = Integer.parseInt(st.nextToken());
 		arr = new int[N][M];
+		visited = new boolean[N][M];
 
-		for (int i = 0; i < N; i++) {
-			char c[] = br.readLine().toCharArray();
+		for (int r = 0; r < N; r++) {
+			String str = br.readLine().trim();
+			char[] cs = str.toCharArray();
 
-			for (int j = 0; j < M; j++) {
-				arr[i][j] = c[j] - '0';
+			for (int c = 0; c < M; c++) {
+				arr[r][c] = cs[c] - '0';
 			}
 		}
-
-		visited = new boolean[N][M];
-		visited[0][0] = true;
+		// 입력 끝
 
 		bfs(0, 0);
-		System.out.println(arr[N - 1][M - 1]);
 
+		System.out.println(arr[N - 1][M - 1]);
 	}
 
-	static void bfs(int r, int c) {
+	private static void bfs(int r, int c) {
 		q.add(new int[] { r, c });
 
 		while (!q.isEmpty()) {
