@@ -24,7 +24,7 @@ public class SWEA_4012 {
 
 		for (int tc = 1; tc <= T; tc++) {
 			st = new StringTokenizer(br.readLine().trim());
-
+			
 			N = Integer.parseInt(st.nextToken());
 			arr = new int[N][N];
 			visited = new boolean[N];
