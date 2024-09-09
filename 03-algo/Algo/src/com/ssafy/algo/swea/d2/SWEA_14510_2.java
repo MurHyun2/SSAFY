@@ -9,7 +9,7 @@ import java.util.StringTokenizer;
 
 public class SWEA_14510_2 {
 
-	static int N, day;
+	static int N, day, max;
 	static int[] arr;
 
 	public static void main(String[] args) throws IOException {
@@ -22,19 +22,20 @@ public class SWEA_14510_2 {
 		for (int tc = 1; tc <= T; tc++) {
 			N = Integer.parseInt(br.readLine().trim());
 			arr = new int[N];
-			day = 0;
-
+			max = 0;
 			st = new StringTokenizer(br.readLine().trim());
 
-			for (int i = 0; i < N; i++)
+			for (int i = 0; i < N; i++) {
 				arr[i] = Integer.parseInt(st.nextToken());
+				max = Math.max(max, arr[i]);
+			}
 			// 입력 끝
 
-			Arrays.sort(arr);
+			day = 0;
 
 			watering();
 
-			System.out.printf("#%d %d\n", tc, day);
+			System.out.println(day);
 		}
 	}
 
@@ -42,28 +43,23 @@ public class SWEA_14510_2 {
 		int oddDays = 0;
 		int evenDays = 0;
 
-		for (int i = 0; i < N - 1; i++) {
-			int diff = arr[N - 1] - arr[i];
-			if (diff == 0)
-				continue;
+		for (int i = 0; i < N; i++) {
+			int diff = max - arr[i];
 			oddDays += diff % 2;
 			evenDays += diff / 2;
 		}
 
-		if (oddDays < evenDays) {
-			while (evenDays - oddDays > 1) {
-				evenDays--;
-				oddDays += 2;
-			}
+		while (evenDays - oddDays > 1) {
+			evenDays--;
+			oddDays += 2;
 		}
 
-//		System.out.println(tc + " => " + oddDays + " " + evenDays);
-
-		if (oddDays > evenDays)
-			day = oddDays * 2 - 1;
-		else if (oddDays < evenDays)
+		if (evenDays > oddDays) {
 			day = evenDays * 2;
-		else
+		} else if (oddDays > evenDays) {
+			day = oddDays * 2 - 1;
+		} else {
 			day = oddDays + evenDays;
+		}
 	}
 }
