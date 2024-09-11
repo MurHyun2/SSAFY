@@ -79,19 +79,18 @@ public class BoardServlet extends HttpServlet {
 					""".formatted(brd.no, brd.title, brd.author));
 		}
 
-		out.print(
-				"""
+		out.print("""
 
-						</table>
-						    </div>
-						    <div>
-						    <button type="button" onclick="location.href='http://127.0.0.1:5500/src/main/webapp/board.html'">
-						    	돌아가기
-						    </button>
-						</div>
-						</body>
-						</html>
-						""");
+				</table>
+				    </div>
+				    <div>
+				    <button type="button" onclick="location.href='http://192.168.210.40:8080/offline-prj/board.html'">
+				    	돌아가기
+				    </button>
+				</div>
+				</body>
+				</html>
+				""");
 
 	}
 
