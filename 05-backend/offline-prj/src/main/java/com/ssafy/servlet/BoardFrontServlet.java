@@ -82,7 +82,7 @@ public class BoardFrontServlet extends HttpServlet {
 				    <!-- 게시판 등록폼 -->
 				    <!-- 필수 : 제목, 내용, 작성자 -->
 				     <form action="http://localhost/offline-prj/mvc/board?type=write" method="post">
-				     	<input type="text" name="type" value="write" hidden/>
+				     	<input type="hidden" name="type" value="write"/>
 				        <label for="">제목<input type="text" name="title"></label><br>
 				        <label for="">내용<input type="text" name="content"></label><br>
 				        <label for="">작성자<input type="text" name="author"></label><br>
