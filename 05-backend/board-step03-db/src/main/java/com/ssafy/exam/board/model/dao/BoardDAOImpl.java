@@ -48,14 +48,17 @@ public class BoardDAOImpl implements BoardDAO {
 		
 		DBUtil dbUtill = DBUtil.getInstance();
 		Connection con = dbUtill.getConnection();
-		String sql = "select no, title, writer, views from board order by no desc";
+		String sql = "select no, title, writer, content, views from board order by no desc";
 		PreparedStatement pstmt = con.prepareStatement(sql);
 		ResultSet rs = pstmt.executeQuery();
 		
 		while(rs.next()) {
 			int no = rs.getInt("no");
+			System.out.println(no);
 			String title = rs.getString("title");
+			System.out.println(title);
 			String writer = rs.getString("writer");
+			System.out.println(writer);
 			String content = rs.getString("content");
 			int views = rs.getInt("views");
 			

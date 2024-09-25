@@ -1,11 +1,7 @@
-<%@page import="com.ssafy.exam.Board"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="jakarta.tags.core"%>
-<%
-List<Board> list = (List<Board>) request.getAttribute("list");
-%>
 <!DOCTYPE html>
 <html>
 <head>
