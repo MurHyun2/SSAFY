@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.StringTokenizer;
 
@@ -14,7 +13,6 @@ public class Baek_1325 {
 
 	static int N, M;
 	static List<Integer>[] adj;
-	static List<Integer> list = new ArrayList<>();;
 	static int[] hackingCount;
 	static boolean[] visited;
 
@@ -38,13 +36,12 @@ public class Baek_1325 {
 			int a = Integer.parseInt(st.nextToken());
 			int b = Integer.parseInt(st.nextToken());
 
-			adj[b].add(a);
+			adj[a].add(b);
 		} // 입력 끝
-		visited = new boolean[N + 1];
 
 		for (int i = 1; i <= N; i++) {
-//			boolean[] visited = new boolean[N + 1];
-			hackingCount[i] = dfs(i, visited);
+			visited = new boolean[N + 1];
+			dfs(i);
 		}
 
 		int max = 0;
@@ -54,27 +51,21 @@ public class Baek_1325 {
 
 		for (int i = 1; i <= N; i++)
 			if (hackingCount[i] == max)
-				list.add(i);
-
-		Collections.sort(list);
-
-		for (int i : list)
-			sb.append(i).append(" ");
+				sb.append(i).append(" ");
 
 		bw.append(sb.toString());
 		bw.flush();
 		bw.close();
 	}
 
-	private static int dfs(int n, boolean[] visited) {
-		int cnt = 1;
+	private static void dfs(int n) {
 		visited[n] = true;
 
 		for (int i : adj[n]) {
-			if (!visited[i])
-				cnt += dfs(i, visited);
+			if (!visited[i]) {
+				hackingCount[i]++;
+				dfs(i);
+			}
 		}
-
-		return cnt;
 	}
 }
