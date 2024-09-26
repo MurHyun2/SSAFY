@@ -39,24 +39,44 @@ public class BoardController extends HttpServlet {
 			writeForm(req, resp);
 			break;
 		case "write":
-			write(req, resp);
+			try {
+				write(req, resp);
+			} catch (ServletException | IOException | SQLException e) {
+				e.printStackTrace();
+			}
 			break;
 		case "detail":
-			detail(req, resp);
+			try {
+				detail(req, resp);
+			} catch (ServletException | IOException | SQLException e) {
+				e.printStackTrace();
+			}
 			break;
 		case "delete":
-			delete(req, resp);
+			try {
+				delete(req, resp);
+			} catch (ServletException | IOException | SQLException e) {
+				e.printStackTrace();
+			}
 			break;
 		case "updateForm":
-			updateForm(req, resp);
+			try {
+				updateForm(req, resp);
+			} catch (ServletException | IOException | SQLException e) {
+				e.printStackTrace();
+			}
 			break;
 		case "update":
-			update(req, resp);
+			try {
+				update(req, resp);
+			} catch (ServletException | IOException | SQLException e) {
+				e.printStackTrace();
+			}
 			break;
 		}
 	}
 
-	private void updateForm(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	private void updateForm(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, SQLException {
 		int no = Integer.parseInt(req.getParameter("no"));
 		Board board = boardDao.selectBoard(no);
 
@@ -66,7 +86,7 @@ public class BoardController extends HttpServlet {
 		rd.forward(req, resp);
 	}
 
-	private void update(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	private void update(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, SQLException {
 		int no = Integer.parseInt(req.getParameter("no"));
 		String title = req.getParameter("title");
 		String content = req.getParameter("content");
@@ -76,19 +96,19 @@ public class BoardController extends HttpServlet {
 		resp.sendRedirect(req.getContextPath() + "/board?action=detail&no=" + no);
 	}
 
-	private void delete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	private void delete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, SQLException {
 		int no = Integer.parseInt(req.getParameter("no"));
 		boardDao.deleteBoard(no);
 
 		resp.sendRedirect(req.getContextPath() + "/board?action=list");
 	}
 
-	private void detail(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	private void detail(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, SQLException {
 		int no = Integer.parseInt(req.getParameter("no"));
-		Board board = boardDao.selectBoard(no);
 		
 		boardDao.updateViewCnt(no);
-
+		
+		Board board = boardDao.selectBoard(no);
 		req.setAttribute("board", board);
 
 		RequestDispatcher rd = req.getRequestDispatcher("/board/detail.jsp");
@@ -97,7 +117,6 @@ public class BoardController extends HttpServlet {
 
 	private void list(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, SQLException {
 		List<Board> list = boardDao.selectBoardList();
-		System.out.println(list);
 
 		req.setAttribute("list", list);
 
@@ -107,10 +126,11 @@ public class BoardController extends HttpServlet {
 
 	private void writeForm(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		RequestDispatcher rd = req.getRequestDispatcher("/board/write.jsp");
+		req.getCookies();
 		rd.forward(req, resp);
 	}
 
-	private void write(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	private void write(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, SQLException {
 		String title = req.getParameter("title");
 		String content = req.getParameter("content");
 		String writer = req.getParameter("writer");
@@ -120,7 +140,6 @@ public class BoardController extends HttpServlet {
 		board.setTitle(title);
 		board.setContent(content);
 		board.setWriter(writer);
-		board.setViews(0);
 		boardDao.insertBoard(board);
 
 		resp.sendRedirect(req.getContextPath() + "/board?action=list");

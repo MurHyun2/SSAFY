@@ -7,16 +7,16 @@ import com.ssafy.exam.board.model.dto.Board;
 
 public interface BoardDAO {
 
-	Board selectBoard(int no);
+	Board selectBoard(int no) throws SQLException;
 
 	List<Board> selectBoardList() throws SQLException;
 
-	void insertBoard(Board board);
+	void insertBoard(Board board) throws SQLException;
 
-	void updateBoard(int no, String title, String content);
+	void updateBoard(int no, String title, String content) throws SQLException;
 
-	void deleteBoard(int no);
+	void deleteBoard(int no) throws SQLException;
 
-	void updateViewCnt(int no);
+	void updateViewCnt(int no) throws SQLException;
 
 }
