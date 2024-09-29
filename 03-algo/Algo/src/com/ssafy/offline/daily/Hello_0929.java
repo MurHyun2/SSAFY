@@ -1,8 +1,6 @@
 package com.ssafy.offline.daily;
 
-import java.util.Arrays;
-
-public class Hello_0916 {
+public class Hello_0929 {
 	static int N, R;
 	static int[] arr, sel;
 	static boolean[] visited;
@@ -14,11 +12,10 @@ public class Hello_0916 {
 
 		sel = new int[R];
 		visited = new boolean[N];
-//		perm(0);
-		comb(0,0);
 
-		sel = new int[N];
-//		subs();
+//		perm(0);
+//		comb(0, 0);
+		subs();
 
 	}
 
@@ -29,18 +26,21 @@ public class Hello_0916 {
 					System.out.print(arr[j] + " ");
 				}
 			}
-			
 			System.out.println();
 		}
 	}
 
-	private static void comb(int now, int depth) {
+	private static void comb(int idx, int depth) {
 		if (depth == R) {
-			System.out.println(Arrays.toString(sel));
+			for (int i : sel) {
+				System.out.print(i + " ");
+			}
+
+			System.out.println();
 			return;
 		}
 
-		for (int i = now; i < N; i++) {
+		for (int i = idx; i < N; i++) {
 			sel[depth] = arr[i];
 			comb(i + 1, depth + 1);
 		}
@@ -48,7 +48,11 @@ public class Hello_0916 {
 
 	private static void perm(int depth) {
 		if (depth == R) {
-			System.out.println(Arrays.toString(sel));
+			for (int i : sel) {
+				System.out.print(i + " ");
+			}
+
+			System.out.println();
 			return;
 		}
 
