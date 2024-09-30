@@ -2,8 +2,6 @@ package com.ssafy.exam.board.controller;
 
 import java.io.IOException;
 
-import com.ssafy.exam.board.model.service.BoardService;
-
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -23,13 +21,12 @@ public class BoardController extends HttpServlet{
 		case "main":
 			doMain(req,resp);
 			break;
-
 		}
 	}
 
-	private void doMain(HttpServletRequest req, HttpServletResponse resp) {
+	private void doMain(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 		
-		
+		req.getRequestDispatcher("main.jsp").forward(req, resp);
 	}
 	
 }
