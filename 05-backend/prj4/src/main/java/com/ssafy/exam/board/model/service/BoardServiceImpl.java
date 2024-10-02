@@ -25,8 +25,8 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public Board getBoardByNo(int no) {
-		return repo.selectBoardByNo(no);
+	public Board getBoardByNo(int videoNo) {
+		return repo.selectBoardByNo(videoNo);
 	}
 
 	@Override
@@ -40,7 +40,7 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public void removeBoard(int no) {
-		repo.deleteBoard(no);
+	public void removeBoard(int videoNo) {
+		repo.deleteBoard(videoNo);
 	}
 }

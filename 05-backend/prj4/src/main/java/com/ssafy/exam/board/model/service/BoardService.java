@@ -10,7 +10,7 @@ public interface BoardService {
 	public abstract List<Board> getAllBoards() throws SQLException;
 
 	// 게시글 조회
-	public abstract Board getBoardByNo(int no);
+	public abstract Board getBoardByNo(int videoNo);
 
 	// 게시글 작성
 	public abstract void writeBoard(Board board);
@@ -19,5 +19,5 @@ public interface BoardService {
 	public abstract void modifyBoard(Board board);
 
 	// 게시글 삭제
-	public abstract void removeBoard(int no);
+	public abstract void removeBoard(int videoNo);
 }

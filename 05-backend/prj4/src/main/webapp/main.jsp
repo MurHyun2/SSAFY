@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="jakarta.tags.core"%>
 <%
 // 세션에 userRole을 임시로 설정
-session.setAttribute("userRole", "user"); // 또는 "user", "guest" 등으로 변경 가능
+session.setAttribute("userRole", "user"); // "admin" 또는 "user", "guest" 등으로 변경 가능
 %>
 <!DOCTYPE html>
 
@@ -21,66 +21,180 @@ session.setAttribute("userRole", "user"); // 또는 "user", "guest" 등으로 �
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-	crossorigin="anonymous"></script>
+	crossorigin="anonymous" ></script>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
+<script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>
 <style>
-.navbar bg-dark border-bottom border-body {
-	display: flex;
-}
-
+/* 폰트 스타일 개선 */
 body {
-	
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f5f7;
+    color: #2c3e50;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
 }
 
-.card-box {
-	display: flex;
-	flex-wrap: wrap; /* 카드가 줄바꿈 할 수 있도록 설정 */
-	justify-content: center; /* 가운데 정렬 */
-	max-width: calc(5 * 18rem + 40px); /* 카드 5개 + 여백 계산 (10px 여백 * 4개) */
-	margin: 0 auto; /* 가운데 정렬 */
-}
-
-.card {
-	margin: 10px; /* 카드 간의 간격 */
-	border-radius: 20px;
-	width: 18rem; /* 카드의 고정 너비 설정 */
-	box-sizing: border-box; /* 패딩 및 마진을 포함하여 너비 계산 */
-}
-
-/* 작은 화면에서 반응형을 위해 카드 크기 조정 */
-@media ( max-width : 768px) {
-	.card {
-		width: calc(50% - 20px); /* 작은 화면에서 2개씩 배치 */
-	}
-}
-
-iframe {
-	border-radius: 20px;
-	width: 100%; /* iframe을 카드의 너비에 맞게 조정 */
-}
-
-.btn {
-	margin-left: 5px;
-	margin-right: 5px;
-}
-
-#loginModal, #signInModal, #updateModal {
-	color: black;
-}
-
+/* 네비게이션 바 스타일 개선 */
 .navbar {
-	border-radius: 10px;
+    background-color: #212529;
+    border-bottom: 3px solid #ffcd39;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    padding: 1rem 2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
+/* SSAFIT 로고 스타일 */
+.navbar a.navbar-brand {
+    font-size: 4rem; /* 크기 조정 (더 크게 설정) */
+    color: #ffc107;
+    text-decoration: none;
+    font-weight: bold;
+    letter-spacing: 2px;
+    font-family: 'Roboto', sans-serif; /* 현대적인 폰트 적용 */
+}
+
+.navbar a.navbar-brand:hover {
+    color: #ffea82; /* 호버 시 강조 */
+}
+
+/* 밑의 글귀 스타일 */
+.navbar p {
+    font-size: 1.5rem; /* 크기 조정 (더 크게 설정) */
+    color: #f8f9fa; /* 글자 색상 변경 */
+    font-family: 'Roboto', sans-serif; /* 현대적인 폰트 적용 */
+}
+
+
+/* 카드 박스 스타일 개선 */
+.card-box {
+    display: flex;
+    flex-wrap: wrap; /* 카드가 줄바꿈 할 수 있도록 설정 */
+    justify-content: center; /* 가운데 정렬 */
+    max-width: calc(5 * 18rem + 40px); /* 카드 5개 + 여백 계산 (10px 여백 * 4개) */
+    margin: 2rem auto; /* 위 아래 여백 추가, 가운데 정렬 */
+    gap: 20px; /* 카드 간의 간격 조정 */
+    padding: 2rem; /* 전체 패딩 추가 */
+}
+
+/* 카드 스타일 개선 */
+.card {
+    margin: 10px; /* 카드 간의 간격 */
+    border-radius: 15px;
+    width: 18rem; /* 카드의 고정 너비 설정 */
+    box-sizing: border-box; /* 패딩 및 마진을 포함하여 너비 계산 */
+    background-color: #ffffff; /* 밝은 배경으로 가독성 향상 */
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1); /* 더 부드럽고 큰 그림자 추가 */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* 호버 시 애니메이션 */
+    overflow: hidden; /* 카드가 넘치지 않도록 설정 */
+}
+
+.card:hover {
+    transform: scale(1.07); /* 호버 시 확대 효과 */
+    box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.2); /* 호버 시 그림자 증가 */
+}
+
+/* 반응형 카드 크기 조정 */
+@media (max-width: 768px) {
+    .card {
+        width: calc(50% - 20px); /* 작은 화면에서 2개씩 배치 */
+    }
+}
+
+@media (max-width: 480px) {
+    .card {
+        width: calc(100% - 20px); /* 더 작은 화면에서 1개씩 배치 */
+    }
+}
+
+/* iframe 스타일 개선 */
+iframe {
+    border-radius: 20px;
+    width: 100%; /* iframe을 카드의 너비에 맞게 조정 */
+    aspect-ratio: 16 / 9; /* 비율 유지 */
+    border: none; /* 기본 테두리 제거 */
+}
+
+/* 버튼 스타일 개선 */
+.btn {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+/* 모달 창 스타일 개선 */
+#loginModal, #signInModal, #updateModal, #insertModal {
+    color: #2c3e50;
+    border-radius: 20px;
+    padding: 2rem; /* 내부 여백 추가 */
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); /* 그림자 추가 */
+}
+/* 캐러셀 아이템 스타일 개선 */
 .carousel-item img {
-	height: 600px; /* 최대 높이를 600px로 설정 */
-	width: 90%; /* 너비를 부모 요소에 맞추어 100%로 설정 */
-	object-fit: cover; /* 이미지 비율을 유지하며 영역을 채움 */
+    height: 600px; /* 최대 높이를 600px로 설정 */
+    width: 100%; /* 너비를 부모 요소에 맞추어 100%로 설정 */
+    object-fit: cover; /* 이미지 비율을 유지하며 영역을 채움 */
+    border-radius: 15px; /* 이미지 모서리를 둥글게 */
+    margin: 0 auto; /* 중앙 정렬 */
 }
 
+/* 콘텐츠 헤더 스타일 개선 */
 .content-header {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
+    display: flex;
+    flex-direction: column; /* 세로 정렬 */
+    align-items: center; /* 가운데 정렬 */
+    padding: 2rem; /* 상하 여백 추가 */
+    background-color: #adb5bd; /* 어두운 배경색 */
+    border-radius: 10px; /* 모서리 둥글게 */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* 그림자 효과 추가 */
+}
+
+/* 제목 스타일 개선 */
+.content-header h2 {
+    color: #ffc107; /* 제목 색상 (노란색) */
+    font-size: 2.5rem; /* 제목 크기 조정 */
+    margin-bottom: 0.5rem; /* 제목 아래 여백 추가 */
+}
+
+/* 부제목 스타일 개선 */
+.content-header p {
+    color: #b0b3b8; /* 부제목 색상 (회색) */
+    font-size: 1.2rem; /* 부제목 크기 조정 */
+}
+
+/* 버튼 스타일 개선 */
+#register-video-btn {
+    background-color: #f8f9fa; /* 밝은 배경색 */
+    color: #343a40; /* 어두운 글자색 */
+    border: 2px solid #ced4da; /* 밝은 테두리 추가 */
+    padding: 10px 20px; /* 패딩 */
+    font-size: 1.1rem; /* 글자 크기 */
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease; /* 애니메이션 효과 */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+}
+
+#register-video-btn:hover {
+    background-color: #e2e6ea; /* 호버 시 색상 변화 */
+    transform: translateY(-2px); /* 호버 시 약간 떠오르는 효과 */
+}
+
+#register-video-btn:active {
+    transform: translateY(0); /* 클릭 시 원래 위치로 복원 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* 클릭 시 그림자 감소 */
+}
+
+/* 반응형 처리 - 작은 화면일 때 간격 조정 */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 0.5rem; /* 모바일에서 상하 패딩 줄이기 */
+    }
+    .content-header {
+        padding: 0.5rem 1rem; /* 상하 및 좌우 패딩 줄이기 */
+    }
+    .carousel-item img {
+        height: 400px; /* 모바일에서 이미지 높이 줄이기 */
+    }
 }
 </style>
 
@@ -89,56 +203,67 @@ iframe {
 <body>
 	<div class="text-bg-dark p-3">
 		<header>
-			<nav class="navbar bg-dark border-bottom border-body"
-				data-bs-theme="dark">
-				<nav class="navbar bg-body-tertiary">
-					<div class="container-fluid">
-						<a class="navbar-brand" href="#"> SSAFIT </a>
-					</div>
-				</nav>
-				<nav class="navbar navbar-expand-lg bg-body-tertiary">
-					<div class="container-fluid">
-						<button class="navbar-toggler" type="button"
-							data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
-							aria-controls="navbarNavDropdown" aria-expanded="false"
-							aria-label="Toggle navigation">
-							<span class="navbar-toggler-icon"></span>
-						</button>
-						<div class="collapse navbar-collapse" id="navbarNavDropdown">
-							<ul class="navbar-nav">
-								<c:choose>
-									<c:when test="${sessionScope.userRole == 'guest'}">
-										<!-- Guest 사용자일 때 로그인 및 회원가입 버튼 -->
-										<button type="button" id="main-login-btn"
-											class="btn btn-primary" data-bs-toggle="modal"
-											data-bs-target="#loginModal" data-bs-whatever="@mdo">Login</button>
-										<li class="nav-item"><a class="nav-link" href="#"
-											id="signIn-a" data-bs-toggle="modal"
-											data-bs-target="#signInModal" data-bs-whatever="@mdo">Sign-in</a></li>
-									</c:when>
-									<c:otherwise>
-										<!-- 다른 사용자일 때 로그아웃 버튼 -->
-										<button type="button" id="main-logout-btn"
-											class="btn btn-primary">Logout</button>
-									</c:otherwise>
-								</c:choose>
-								<!-- 드롭다운 메뉴 -->
-								<li class="nav-item dropdown"><a
-									class="nav-link dropdown-toggle" href="#" role="button"
-									data-bs-toggle="dropdown" aria-expanded="false"> Menu </a>
-									<ul class="dropdown-menu">
-										<li><a class="dropdown-item" href="#">마이페이지</a></li>
-										<li><a class="dropdown-item" href="#">메뉴1</a></li>
-										<li><a class="dropdown-item" href="#">메뉴2</a></li>
-									</ul>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</nav>
-			</nav>
+		    <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom border-body py-3" data-bs-theme="dark">
+		        <div class="container d-flex flex-column align-items-center">
+		            <!-- SSAFIT Logo and Title -->
+		            <a class="navbar-brand" href="#video-section" style="letter-spacing: 3px;">
+		                SSAFIT
+		            </a>
+		            <!-- Centered Tagline -->
+		            <p class="text-center text-white mt-2 mb-0">
+		                <em>"Unlock Your Potential with Expert Fitness Video Reviews"</em>
+		            </p>
+		            <!-- Toggler for Mobile View -->
+		            <button class="navbar-toggler mt-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+		                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+		                <span class="navbar-toggler-icon"></span>
+		            </button>
+		            <!-- Navigation Menu -->
+		            <div class="collapse navbar-collapse justify-content-center mt-3" id="navbarNavDropdown">
+		                <ul class="navbar-nav">
+		                    <c:choose>
+		                        <c:when test="${sessionScope.userRole == 'guest'}">
+		                            <!-- Guest 로그인 및 회원가입 버튼 -->
+		                            <li class="nav-item me-3">
+		                                <button type="button" id="main-login-btn" class="btn btn-outline-light"
+		                                    data-bs-toggle="modal" data-bs-target="#loginModal" data-bs-whatever="@mdo">
+		                                    <i class="fas fa-sign-in-alt"></i> Login
+		                                </button>
+		                            </li>
+		                            <li class="nav-item">
+		                                <a class="btn btn-outline-light" href="#" id="signIn-a" data-bs-toggle="modal"
+		                                    data-bs-target="#signInModal" data-bs-whatever="@mdo">
+		                                    Sign Up
+		                                </a>
+		                            </li>
+		                        </c:when>
+		                        <c:otherwise>
+		                            <!-- 로그인된 사용자 로그아웃 버튼 -->
+		                            <li class="nav-item">
+		                                <button type="button" id="main-logout-btn" class="btn btn-outline-light">
+		                                    <i class="fas fa-sign-out-alt"></i> Logout
+		                                </button>
+		                            </li>
+		                        </c:otherwise>
+		                    </c:choose>
+		                    <!-- 드롭다운 메뉴 -->
+		                    <li class="nav-item dropdown ms-3">
+		                        <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown"
+		                            aria-expanded="false">
+		                            Menu
+		                        </a>
+		                        <ul class="dropdown-menu">
+		                            <li><a class="dropdown-item" href="#">마이페이지</a></li>
+		                            <li><a class="dropdown-item" href="#">메뉴1</a></li>
+		                            <li><a class="dropdown-item" href="#">메뉴2</a></li>
+		                        </ul>
+		                    </li>
+		                </ul>
+		            </div>
+		        </div>
+		    </nav>
 		</header>
-		<main style="width: 65%; margin: 0 auto;">
+		<main style="width: 70%; margin: 0 auto;">
 			<br>
 			<introduce>
 			<div id="carouselExampleIndicators" class="carousel slide">
@@ -177,15 +302,19 @@ iframe {
 			</introduce>
 			<br>
 			<div class="content-header">
-				<h2>추천 운동 영상</h2>
+				<h2 class="text-center text-dark fw-bold" style="font-size: 2.5rem; letter-spacing: 1.5px;">Unlock Your Fitness Journey</h2>
+   				<p class="text-center text-muted" style="font-size: 1.2rem;">Explore our handpicked selection of fitness videos</p>
 				<c:if test="${sessionScope.userRole == 'admin'}">
 					<div>
-						<button type="button" class="btn btn-light">글쓰기</button>
+					    <button type="button" id="register-video-btn" class="btn btn-primary rounded-pill fw-bold" 
+					        data-bs-toggle="modal" data-bs-target="#insertModal" data-bs-whatever="@mdo">
+					        <i class="fas fa-plus-circle"></i> 동영상 등록
+					    </button>
 					</div>
 				</c:if>
 			</div>
 			<!-- ----------------------------운동 카드 목록 START-------------------------------- -->
-			<div class="card-box">
+			<div id="video-section" class="card-box">
 				<c:choose>
 					<c:when test="${sessionScope.userRole == 'admin'}">
 						<!-- admin일 때 전체 리스트 출력 -->
@@ -205,22 +334,25 @@ iframe {
 									<li class="list-group-item">채널명: ${video.channelName}</li>
 								</ul>
 								<div class="card-body">
-								    <form style="display: inline;">
-								        <button class="btn btn-outline-dark" type="submit">리뷰</button>
-								        <button type="button" class="btn btn-outline-primary update-btn"
-								                data-bs-toggle="modal" data-bs-target="#updateModal"
-								                data-video-no="${video.videoNo}" data-url="${video.videoURL}"
-								                data-title="${video.videoTitle}"
-								                data-exercise-topic="${video.category}"
-								                data-exercise-area1="${video.part}"
-								                data-channel-name="${video.channelName}">수정</button>
-								    </form>
-								    
-								    <form action="/board" method="post" style="display: inline;" onsubmit="return confirmDelete();">
-								        <input type="hidden" name="action" value="deleteBoard">
-								        <input type="hidden" name="videoNo" value="${video.videoNo}">
-								        <button type="submit" class="btn btn-outline-danger">삭제</button>
-								    </form>
+									<form style="display: inline;">
+										<button class="btn btn-outline-dark" type="submit">리뷰</button>
+										<button type="button"
+											class="btn btn-outline-primary update-btn"
+											data-bs-toggle="modal" data-bs-target="#updateModal"
+											data-video-no="${video.videoNo}" data-url="${video.videoURL}"
+											data-title="${video.videoTitle}"
+											data-exercise-topic="${video.category}"
+											data-exercise-area1="${video.part}"
+											data-channel-name="${video.channelName}">수정</button>
+									</form>
+
+									<form action="${pageContext.request.contextPath }/board"
+										method="post" style="display: inline;"
+										onsubmit="return confirmDelete();">
+										<input type="hidden" name="action" value="delete"> <input
+											type="hidden" name="videoNo" value="${video.videoNo}">
+										<button type="submit" class="btn btn-outline-danger">삭제</button>
+									</form>
 								</div>
 							</div>
 						</c:forEach>
@@ -244,8 +376,8 @@ iframe {
 								</ul>
 								<div class="card-body">
 									<form action="/review">
-										<button class="btn btn-outline-primary work-out-btn" type="button"
-											onclick="window.open('${video.videoURL}')">운동하기</button>
+										<button class="btn btn-outline-primary work-out-btn"
+											type="button" onclick="window.open('${video.videoURL}')">운동하기</button>
 										<input type="hidden" name="action" value="review"> <input
 											type="hidden" name="videoNo" value="${video.videoNo}">
 										<button class="btn btn-outline-dark">리뷰</button>
@@ -336,7 +468,8 @@ iframe {
 							</form>
 						</div>
 						<div class="modal-footer">
-							<button type="button" class="btn btn-primary" id="sigInBtn">회원가입</button>
+							<button type="button" class="btn btn-primary" id="signUpBtn">회원가입</button>
+							<button type="reset" class="btn btn-outline-dark">초기화</button>
 						</div>
 					</div>
 				</div>
@@ -353,9 +486,10 @@ iframe {
 								aria-label="Close"></button>
 						</div>
 						<div class="modal-body">
-							<form method="post" action="/board">
-								<input type="hidden" name="action" value="update" />
-								<input type="hidden" id="updateVideoNo" name="videoNo" />
+							<form method="post"
+								action="${pageContext.request.contextPath }/board">
+								<input type="hidden" name="action" value="update" /> <input
+									type="hidden" id="updateVideoNo" name="videoNo" />
 								<div class="mb-3">
 									<label for="recipient-name" class="col-form-label">■
 										URL:</label> <input type="text" class="form-control" id="updateURL"
@@ -382,7 +516,56 @@ iframe {
 										name="channelName">
 								</div>
 								<div class="modal-footer">
-									<button type="submit" class="btn btn-primary" id="sigInBtn">수정</button>
+									<button type="submit" class="btn btn-primary" id="updateBtn">수정</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- 등록 모달창 -->
+			<div class="modal fade" id="insertModal" tabindex="-1"
+				aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h1 class="modal-title fs-5" id="exampleModalLabel">영상 등록</h1>
+							<button type="button" class="btn-close" data-bs-dismiss="modal"
+								aria-label="Close"></button>
+						</div>
+						<div class="modal-body">
+							<form method="post"
+								action="${pageContext.request.contextPath }/board">
+								<input type="hidden" name="action" value="insert" />
+								<div class="mb-3">
+									<label for="recipient-name" class="col-form-label">■
+										URL:</label> <input type="text" class="form-control" id="insertURL"
+										name="videoURL">
+								</div>
+								<div class="mb-3">
+									<label for="message-text" class="col-form-label">■ 제목:</label>
+									<input type="text" class="form-control" id="insertTitle"
+										name="videoTitle">
+								</div>
+								<div class="mb-3">
+									<label for="message-text" class="col-form-label">■ 운동
+										주제:</label> <input type="text" class="form-control"
+										id="insertCategory" name="category">
+								</div>
+								<div class="mb-3">
+									<label for="message-text" class="col-form-label">■ 운동
+										부위:</label> <input type="text" class="form-control" id="insertPart"
+										name="part">
+								</div>
+								<div class="mb-3">
+									<label for="message-text" class="col-form-label">■ 채널명:</label>
+									<input type="text" class="form-control" id="insertChannelName"
+										name="channelName">
+								</div>
+								<div class="modal-footer">
+									<button type="submit" class="btn btn-primary" id="insertBtn">등록</button>
+									<button type="reset" class="btn btn-outline-dark">초기화</button>
 								</div>
 							</form>
 						</div>
@@ -469,9 +652,9 @@ iframe {
                 });
                 
                 // 회원가입 함수
-                const sigInBtn = document.getElementById('sigInBtn');
+                const signUpBtn = document.getElementById('signUpBtn');
 
-                sigInBtn.addEventListener('click', () => {
+                signUpBtn.addEventListener('click', () => {
                     const signInPw = document.getElementById('signInPw');
                     const signInPw2 = document.getElementById('signInPw2');
                     const signInId = document.getElementById('signInId');
@@ -565,7 +748,7 @@ iframe {
                 }
             </script>
 		</main>
-		<footer> </footer>
+		<footer></footer>
 	</div>
 </body>
 

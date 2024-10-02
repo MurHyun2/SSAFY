@@ -15,7 +15,7 @@ public class DBUtil {
 	 */
 	private static final String url = "jdbc:mysql://localhost:3306/prj4?serverTimezone=UTC";
 	private static final String username = "ssafy";
-	private static final String password = "Ssafy123*";
+	private static final String password = "ssafy";
 	private static final String driverName = "com.mysql.cj.jdbc.Driver";
 	private static DBUtil instance = new DBUtil();
 

@@ -10,7 +10,7 @@ public interface BoardRepository {
 	public abstract List<Board> selectAllBoards() throws SQLException;
 
 	// 비디오 조회
-	public abstract Board selectBoardByNo(int no);
+	public abstract Board selectBoardByNo(int videoNo);
 
 	// 비디오 등록하기
 	public abstract void insertBoard(Board board);
@@ -19,5 +19,5 @@ public interface BoardRepository {
 	public abstract void updateBoard(Board board);
 
 	// 비디오 삭제하기
-	public abstract void deleteBoard(int no);
+	public abstract void deleteBoard(int videoNo);
 }
