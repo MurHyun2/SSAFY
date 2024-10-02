@@ -1,5 +1,6 @@
 package com.ssafy.exam.board.model.service;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import com.ssafy.exam.board.model.dto.Board;
@@ -19,13 +20,13 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public List<Board> getList() {
-		return repo.selectAll();
+	public List<Board> getAllBoards() throws SQLException {
+		return repo.selectAllBoards();
 	}
 
 	@Override
-	public Board getBoard(int id) {
-		return repo.selectOne();
+	public Board getBoardByNo(int no) {
+		return repo.selectBoardByNo(no);
 	}
 
 	@Override
@@ -39,7 +40,7 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public void removeBoard(int id) {
-		repo.deleteBoard(id);
+	public void removeBoard(int no) {
+		repo.deleteBoard(no);
 	}
 }

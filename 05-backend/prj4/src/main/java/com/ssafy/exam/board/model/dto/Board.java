@@ -1,7 +1,7 @@
 package com.ssafy.exam.board.model.dto;
 
 public class Board {
-	private int videoNum;
+	private int videoNo;
 	private String videoURL;
 	private String videoTitle;
 	private String category;
@@ -13,9 +13,9 @@ public class Board {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Board(int videoNum, String videoURL, String videoTitle, String category, String part, String channelName) {
+	public Board(int videoNo, String videoURL, String videoTitle, String category, String part, String channelName) {
 		super();
-		this.videoNum = videoNum;
+		this.videoNo = videoNo;
 		this.videoURL = videoURL;
 		this.videoTitle = videoTitle;
 		this.category = category;
@@ -23,12 +23,12 @@ public class Board {
 		this.channelName = channelName;
 	}
 
-	public int getVideoNum() {
-		return videoNum;
+	public int getVideoNo() {
+		return videoNo;
 	}
 
-	public void setVideoNum(int videoNum) {
-		this.videoNum = videoNum;
+	public void setVideoNo(int videoNo) {
+		this.videoNo = videoNo;
 	}
 
 	public String getVideoURL() {
@@ -73,7 +73,7 @@ public class Board {
 
 	@Override
 	public String toString() {
-		return "Board [videoNum=" + videoNum + ", videoURL=" + videoURL + ", videoTitle=" + videoTitle + ", category="
+		return "Board [videoNo=" + videoNo + ", videoURL=" + videoURL + ", videoTitle=" + videoTitle + ", category="
 				+ category + ", part=" + part + ", channelName=" + channelName + "]";
 	}
 }
