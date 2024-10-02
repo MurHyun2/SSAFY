@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="jakarta.tags.core"%>
 <%
 // 세션에 userRole을 임시로 설정
-session.setAttribute("userRole", "admin"); // 또는 "user", "guest" 등으로 변경 가능
+session.setAttribute("userRole", "user"); // 또는 "user", "guest" 등으로 변경 가능
 %>
 <!DOCTYPE html>
 
