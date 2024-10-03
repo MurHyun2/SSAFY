@@ -13,6 +13,7 @@ import com.ssafy.exam.board.model.repository.BoardRepository;
 import com.ssafy.exam.board.model.repository.BoardRepositoryImpl;
 import com.ssafy.exam.board.model.service.BoardService;
 import com.ssafy.exam.board.model.service.BoardServiceImpl;
+import com.ssafy.exam.member.model.dto.Member;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -20,6 +21,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 @WebServlet("/board")
 public class BoardController extends HttpServlet {
@@ -56,9 +58,9 @@ public class BoardController extends HttpServlet {
 
 	private void doRemove(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		int videoNo = Integer.parseInt(req.getParameter("videoNo"));
-		
+
 		boardService.removeBoard(videoNo);
-		
+
 		resp.sendRedirect(req.getContextPath() + "/board?action=main");
 	}
 
@@ -80,13 +82,13 @@ public class BoardController extends HttpServlet {
 		board.setChannelName(channelName);
 
 		boardService.modifyBoard(board);
-		
+
 		resp.sendRedirect(req.getContextPath() + "/board?action=main");
 	}
-	
+
 	private void doWrite(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		Board board = new Board();
-		
+
 		String videoURL = req.getParameter("videoURL");
 		String videoTitle = req.getParameter("videoTitle");
 		String category = req.getParameter("category");
@@ -100,12 +102,30 @@ public class BoardController extends HttpServlet {
 		board.setChannelName(channelName);
 
 		boardService.writeBoard(board);
-		
+
 		resp.sendRedirect(req.getContextPath() + "/board?action=main");
 	}
 
 	private void doMain(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException, ServletException, SQLException {
+
+		HttpSession session = req.getSession();
+		Member member = (Member) session.getAttribute("member");
+
+		if (member == null) {
+			member = new Member();
+			member.setId("guest");
+			session.setAttribute("member", member);
+		}
+
+		// 로그인 메시지를 가져와 요청 속성에 저장
+		String resultMessage = (String) session.getAttribute("resultMessage");
+		if (resultMessage != null) {
+			req.setAttribute("resultMessage", resultMessage);
+			session.removeAttribute("resultMessage"); // 메시지를 사용한 후 제거
+		}
+
+		System.out.println("SESSION memberId: " + member.getId());
 
 		// 1. 데이터베이스에서 모든 게시글을 가져와 boardList에 저장
 		List<Board> boardList = boardService.getAllBoards();
