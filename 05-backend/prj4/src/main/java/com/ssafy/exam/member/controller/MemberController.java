@@ -61,10 +61,10 @@ public class MemberController extends HttpServlet {
 	    String nickName = request.getParameter("nick_name");
 	    String phoneNum = request.getParameter("phone");
 	    String addrNum = request.getParameter("zip_code");
-	    String addBasic = request.getParameter("user_add1");
+	    String addrBasic = request.getParameter("user_add1");
 	    String addrDetail = request.getParameter("user_add2");
 
-	    Member member = new Member(id, password, name, nickName, phoneNum, addrNum, addBasic, addrDetail);
+	    Member member = new Member(id, password, name, nickName, phoneNum, addrNum, addrBasic, addrDetail);
 
 	    try {
 	        service.register(member);

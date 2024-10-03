@@ -28,7 +28,7 @@ CREATE TABLE Member(
     nick_name VARCHAR(50) UNIQUE,
     phone_num VARCHAR(15) UNIQUE,
     addr_num CHAR(5),
-    add_basic VARCHAR(50),
+    addr_basic VARCHAR(50),
     addr_detail VARCHAR(50)
 );
 
@@ -49,12 +49,11 @@ INSERT INTO Review
 VALUES(1, 1, "정말 좋아요", "김싸피", 0, current_timestamp());
 
 INSERT INTO Member
-VALUES("ssafy", "ssafy", "김띵균", "김싸피", "01012341234", 15321, "대전시 유성구 구암동", "빌라 301호");
+VALUES("ssafy", "ssafy", "김띵균", "김싸피", "01012341234", 15321, "대전시 유성구 구암동", "빌라 301호"),
+("admin", "admin", "종경대", "어드민", "01098765432", 13211, "대전시 유성구 궁동", "빌라 101호");
 
 SELECT * FROM Video;
 SELECT * FROM Review;
 SELECT * FROM Member;
 
 COMMIT;
-
-UPDATE Video SET video_URL = ?, video_title, category = ?, part = ?, channel_name = ? WHERE video_no = ?;

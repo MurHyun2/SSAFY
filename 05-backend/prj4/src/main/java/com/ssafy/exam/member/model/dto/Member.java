@@ -7,21 +7,21 @@ public class Member {
     private String nickName;
     private String phoneNum;
     private String addrNum;
-    private String addBasic;
+    private String addrBasic;
     private String addrDetail;
 
    
     public Member() {}
 
     
-    public Member(String id, String password, String name, String nickName, String phoneNum, String addrNum, String addBasic, String addrDetail) {
+    public Member(String id, String password, String name, String nickName, String phoneNum, String addrNum, String addrBasic, String addrDetail) {
         this.id = id;
         this.password = password;
         this.name = name;
         this.nickName = nickName;
         this.phoneNum = phoneNum;
         this.addrNum = addrNum;
-        this.addBasic = addBasic;
+        this.addrBasic = addrBasic;
         this.addrDetail = addrDetail;
     }
 
@@ -74,12 +74,12 @@ public class Member {
         this.addrNum = addrNum;
     }
 
-    public String getAddBasic() {
-        return addBasic;
+    public String getAddrBasic() {
+        return addrBasic;
     }
 
-    public void setAddBasic(String addBasic) {
-        this.addBasic = addBasic;
+    public void setAddrBasic(String addrBasic) {
+        this.addrBasic = addrBasic;
     }
 
     public String getAddrDetail() {
@@ -99,7 +99,7 @@ public class Member {
                 ", nickName='" + nickName + '\'' +
                 ", phoneNum='" + phoneNum + '\'' +
                 ", addrNum='" + addrNum + '\'' +
-                ", addBasic='" + addBasic + '\'' +
+                ", addrBasic='" + addrBasic + '\'' +
                 ", addrDetail='" + addrDetail + '\'' +
                 '}';
     }

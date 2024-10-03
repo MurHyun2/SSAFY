@@ -128,7 +128,7 @@ iframe {
 }
 
 /* 모달 창 스타일 개선 */
-#loginModal, #signInModal, #updateModal, #insertModal {
+#loginModal, #signInModal, #updateModal, #insertModal, #memberInfoModal {
 	color: #2c3e50;
 	border-radius: 20px;
 	padding: 2rem; /* 내부 여백 추가 */
@@ -272,9 +272,13 @@ iframe {
 										role="button" data-bs-toggle="dropdown" aria-expanded="false">
 											Menu </a>
 										<ul class="dropdown-menu">
-											<li><a class="dropdown-item" href="#">마이페이지</a></li>
-											<li><a class="dropdown-item" href="#">메뉴1</a></li>
-											<li><a class="dropdown-item" href="#">메뉴2</a></li>
+											<li><a class="dropdown-item" href="#">마이 페이지</a></li>
+											<li>
+												<a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#memberInfoModal">
+									                회원 정보
+									            </a>
+											</li>
+											<li><a class="dropdown-item" href="#">회원 탈퇴</a></li>
 										</ul></li>
 								</c:otherwise>
 							</c:choose>
@@ -354,40 +358,41 @@ iframe {
 						<!-- admin일 때 전체 리스트 출력 -->
 						<c:forEach items="${listAll}" var="video">
 							<div class="card">
-								<iframe width="100%" height="315" src="${video.videoURL}"
-									title="YouTube video player" frameborder="0"
-									allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-									referrerpolicy="strict-origin-when-cross-origin"
-									allowfullscreen></iframe>
-								<div class="card-body">
-									<h5 class="card-title">${video.videoTitle}</h5>
-								</div>
-								<ul class="list-group list-group-flush">
-									<li class="list-group-item">운동 주제: ${video.category}</li>
-									<li class="list-group-item">운동 부위: ${video.part}</li>
-									<li class="list-group-item">채널명: ${video.channelName}</li>
-								</ul>
-								<div class="card-body">
-									<form style="display: inline;">
-										<button class="btn btn-outline-dark" type="submit">리뷰</button>
-										<button type="button"
-											class="btn btn-outline-primary update-btn"
-											data-bs-toggle="modal" data-bs-target="#updateModal"
-											data-video-no="${video.videoNo}" data-url="${video.videoURL}"
-											data-title="${video.videoTitle}"
-											data-exercise-topic="${video.category}"
-											data-exercise-area1="${video.part}"
-											data-channel-name="${video.channelName}">수정</button>
-									</form>
-
-									<form action="${pageContext.request.contextPath }/board"
-										method="post" style="display: inline;"
-										onsubmit="return confirmDelete();">
-										<input type="hidden" name="action" value="delete"> <input
-											type="hidden" name="videoNo" value="${video.videoNo}">
-										<button type="submit" class="btn btn-outline-danger">삭제</button>
-									</form>
-								</div>
+							    <iframe width="100%" height="315" src="${video.videoURL}"
+							        title="YouTube video player" frameborder="0"
+							        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+							        referrerpolicy="strict-origin-when-cross-origin"
+							        allowfullscreen></iframe>
+							    <div class="card-body">
+							        <h5 class="card-title">${video.videoTitle}</h5>
+							    </div>
+							    <ul class="list-group list-group-flush">
+							        <li class="list-group-item">운동 주제: ${video.category}</li>
+							        <li class="list-group-item">운동 부위: ${video.part}</li>
+							        <li class="list-group-item">채널명: ${video.channelName}</li>
+							    </ul>
+							    <div class="card-body d-flex justify-content-between align-items-center">
+							        <form style="margin-right: auto;">
+							            <button class="btn btn-outline-dark" type="submit">리뷰</button>
+							        </form>
+							        <div>
+							            <button type="button"
+							                class="btn btn-outline-primary update-btn"
+							                data-bs-toggle="modal" data-bs-target="#updateModal"
+							                data-video-no="${video.videoNo}" data-url="${video.videoURL}"
+							                data-title="${video.videoTitle}"
+							                data-exercise-topic="${video.category}"
+							                data-exercise-area1="${video.part}"
+							                data-channel-name="${video.channelName}">수정</button>
+							            <form action="${pageContext.request.contextPath }/board"
+							                method="post" style="display: inline;"
+							                onsubmit="return confirmDelete();">
+							                <input type="hidden" name="action" value="delete"> 
+							                <input type="hidden" name="videoNo" value="${video.videoNo}">
+							                <button type="submit" class="btn btn-outline-danger">삭제</button>
+							            </form>
+							        </div>
+							    </div>
 							</div>
 						</c:forEach>
 					</c:when>
@@ -527,6 +532,65 @@ iframe {
 					</div>
 				</div>
 			</div>
+			
+			<!-- 회원 정보 모달창 -->
+			<div class="modal fade" id="memberInfoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			    <div class="modal-dialog">
+			        <div class="modal-content">
+			            <div class="modal-header">
+			                <h1 class="modal-title fs-5" id="exampleModalLabel">회원 정보</h1>
+			                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			            </div>
+			            <div class="modal-body">
+			                <form method="post" action="${pageContext.request.contextPath}/member" onsubmit="return validateForm()">
+			                    <input type="hidden" name="action" value="update" />
+			                    <input type="hidden" name="id" value="${sessionScope.member.id}" />
+			                    <div class="mb-3">
+			                        <label for="signInId" class="col-form-label">■ 아이디:</label>
+				                    <input type="text" class="form-control" id="memberUpdateId" value="${sessionScope.member.id}" style="background-color: #f0f0f0;" readonly>
+				                </div>
+			                    <div class="mb-3">
+			                        <label for="existingPw" class="col-form-label">■ 비밀번호:</label>
+			                        <input type="password" class="form-control" id="existingPw" required placeholder="기존 비밀번호를 입력하세요">
+			                    </div>
+			                    <!-- <div class="mb-3">
+			                        <label for="newPw" class="col-form-label">■ 새로운 비밀번호:</label>
+			                        <input type="password" class="form-control" id="newPw" name="newPassword" required placeholder="새로운 비밀번호를 입력하세요">
+			                    </div>
+			                    <div class="mb-3">
+			                        <label for="newPw2" class="col-form-label">■ 비밀번호 확인:</label>
+			                        <input type="password" class="form-control" id="newPw2" required placeholder="비밀번호 확인" oninput="checkPasswordMatch()">
+			                        <div id="passwordMessage" class="text-danger mt-2" style="display: none;"></div>
+			                    </div> -->
+			                    <div class="mb-3">
+			                        <label for="name" class="col-form-label">■ 이름:</label>
+			                        <input type="text" class="form-control" id="name" name="name" value="${sessionScope.member.name}" required>
+			                    </div>
+			                    <div class="mb-3">
+			                        <label for="nickName" class="col-form-label">■ 닉네임:</label>
+			                        <input type="text" class="form-control" id="nickName" name="nick_name" required value="${sessionScope.member.nickName}">
+			                    </div>
+			                    <div class="mb-3">
+			                        <label for="cellPhone" class="col-form-label">■ 전화번호:</label>
+			                        <input type="text" class="form-control" id="cellPhone" name="phone" value="${sessionScope.member.phoneNum}" maxlength="13" required onkeyup="formatPhoneNumber(event)">
+			                    </div>
+			                    <div class="mb-3">
+			                        <label for="zipp_code_id" class="form-label">■ 주소</label>
+			                        <div class="d-flex">
+			                            <input type="text" class="form-control" id="zipp_code_id" name="zip_code" maxlength="10" value="${sessionScope.member.addrNum}" required style="width: 50%;">
+			                            <button type="button" id="zipp_btn" class="btn btn-primary ms-2" onclick="execDaumPostcode()">우편번호 찾기</button>
+			                        </div>
+			                        <input type="text" class="form-control mb-2 mt-2" name="user_add1" id="UserAdd1" maxlength="40" value="${sessionScope.member.addrBasic}" required>
+			                        <input type="text" class="form-control" name="user_add2" id="UserAdd2" maxlength="40" value="${sessionScope.member.addrDetail}">
+			                    </div>
+			                    <div class="modal-footer">
+			                        <button type="submit" class="btn btn-primary w-100" onclick="return validateExistingPassword()">수정</button>
+			                    </div>
+			                </form>
+			            </div>
+			        </div>
+			    </div>
+			</div>
 
 			<!-- 수정 모달창 -->
 			<div class="modal fade" id="updateModal" tabindex="-1"
@@ -627,6 +691,22 @@ iframe {
 			</div>
 
 			<script>
+				// 기존 비밀번호 확인 함수
+			    function validateExistingPassword() {
+			        const existingPassword = document.getElementById('existingPw').value;
+			        const actualExistingPassword = "${sessionScope.member.password}"; // 서버에서 가져온 비밀번호
+			        
+			        if (existingPassword !== actualExistingPassword) {
+			            alert('비밀번호가 일치하지 않습니다.');
+			            document.getElementById('existingPw').value = "";
+			            /* document.getElementById('newPw').value = "";
+			            document.getElementById('newPw2').value = ""; */
+			            document.getElementById('existingPw').focus(); // 기존 비밀번호 입력 필드로 포커스 이동
+			            return false; // 폼 전송을 막음
+			        }
+			        return true; // 폼 전송 허용
+			    }
+			
 			 	// 로그인 메시지가 3초 후에 사라지도록 설정
 		        $(document).ready(function() {
 		            setTimeout(function() {

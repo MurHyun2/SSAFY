@@ -14,7 +14,7 @@ public class MemberDAOImpl implements MemberDAO {
 
     @Override
     public void saveMember(Member member) throws SQLException {
-        String sql = "INSERT INTO Member (id, password, name, nick_name, phone_num, addr_num, add_basic, addr_detail) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Member (id, password, name, nick_name, phone_num, addr_num, addr_basic, addr_detail) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         try (Connection conn = dbUtil.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, member.getId());
@@ -23,7 +23,7 @@ public class MemberDAOImpl implements MemberDAO {
             pstmt.setString(4, member.getNickName());
             pstmt.setString(5, member.getPhoneNum());
             pstmt.setString(6, member.getAddrNum());
-            pstmt.setString(7, member.getAddBasic());
+            pstmt.setString(7, member.getAddrBasic());
             pstmt.setString(8, member.getAddrDetail());
             pstmt.executeUpdate();
         }
