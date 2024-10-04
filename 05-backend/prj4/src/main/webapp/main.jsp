@@ -731,7 +731,7 @@ iframe {
                     return confirm("이 비디오를 정말 삭제하시겠습니까?");
                 }
                 
-             // 수정 함수
+            	// 수정 함수
 				document.addEventListener('DOMContentLoaded', function () {
 				    const updateButtons = document.querySelectorAll('.update-btn');
 				
