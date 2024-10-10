@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="movie" class="com.ssafy.movie.Movie">
+		<property name="director" ref="director" />
+	</bean>
+
+	<bean id="director" class="com.ssafy.movie.Director">
+	<!-- <constructor-arg> <value>크리스토퍼 놀란</value> </constructor-arg> -->
+		<property name="name" value="크리스토퍼 놀란" />
+	</bean>
+</beans>
