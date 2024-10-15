@@ -1,0 +1,21 @@
+<%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="c" uri="jakarta.tags.core"%>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title></title>
+</head>
+<body>
+	<c:set var="path" value="${pageContext.request.contextPath }" />
+	
+	<h1>HELLO! DETAIL PAGE</h1>
+	<a href="${path}/board/boardList">게시판 이동</a>
+	
+	<form action="${path}/board/boardInsert" method="get">
+		제목 : <input type="text" name="title"><br>
+		내용 : <input type="text" name="content"><br>
+		<button>입력</button>
+		<button type="reset">초기화</button>
+	</form>
+</body>
+</html>
