@@ -7,6 +7,16 @@ public class Board {
 	private int viewCnt;
 	private String regDate;
 
+	private BoardFile boardFile;
+
+	public BoardFile getBoardFile() {
+		return boardFile;
+	}
+
+	public void setBoardFile(BoardFile boardFile) {
+		this.boardFile = boardFile;
+	}
+
 	public Board() {
 		super();
 	}

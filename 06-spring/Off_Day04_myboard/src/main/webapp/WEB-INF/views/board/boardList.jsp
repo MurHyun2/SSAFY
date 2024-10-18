@@ -29,6 +29,6 @@
 			</tr>
 		</c:forEach>
 	</table>
-	<span><a href="${path }/board/boardInsertForm">입력창</a></span>
+	<span><a href="${path }/board/boardInsert">입력창</a></span>
 </body>
 </html>

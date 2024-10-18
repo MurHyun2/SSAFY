@@ -6,6 +6,6 @@
 </head>
 <body>	
 	<h1>HELLO! INDEX PAGE</h1>
-	<a href="${pageContext.request.contextPath }/board/list">게시판 이동</a>
+	<a href="${pageContext.request.contextPath }/board/boardList">게시판 이동</a>
 </body>
 </html>

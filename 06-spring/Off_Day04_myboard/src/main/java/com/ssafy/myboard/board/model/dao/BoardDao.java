@@ -1,18 +1,22 @@
 package com.ssafy.myboard.board.model.dao;
 
-import java.sql.SQLException;
 import java.util.List;
 
 import com.ssafy.myboard.board.model.Board;
+import com.ssafy.myboard.board.model.BoardFile;
 
 public interface BoardDao {
-	List<Board> selectBoardAll() throws SQLException;
+	List<Board> selectBoardAll();
 
-	Board selectBoardOne(int no) throws SQLException;
+	Board selectBoardOne(int no);
 
-	void insertBoard(Board board) throws SQLException;
+	void insertBoard(Board board);
 
-	void updateBoard(Board board) throws SQLException;
+	void updateBoard(Board board);
 
-	void deleteBoard(int no) throws SQLException;
+	void deleteBoard(int no);
+
+	void insertBoardFile(BoardFile boardFile);
+
+	BoardFile selectBoardFileByNo(int no);
 }

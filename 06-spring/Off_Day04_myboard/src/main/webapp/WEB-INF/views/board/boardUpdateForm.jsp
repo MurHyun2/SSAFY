@@ -11,7 +11,7 @@
 	<h1>HELLO! DETAIL PAGE</h1>
 	<a href="${path}/board/boardList">게시판 이동</a>
 	
-	<form action="${path}/board/boardUpdate" method="get">
+	<form action="${path}/board/boardUpdate" method="post">
 		<input type="hidden" name="no" value="${board.no }">
 		제목 : <input type="text" name="title" value="${board.title }"><br>
 		내용 : <input type="text" name="content" value="${board.content }"><br>

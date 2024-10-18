@@ -11,9 +11,10 @@
 	<h1>HELLO! DETAIL PAGE</h1>
 	<a href="${path}/board/boardList">게시판 이동</a>
 	
-	<form action="${path}/board/boardInsert" method="get">
+	<form action="${path}/board/boardInsert" method="post" enctype="multipart/form-data">
 		제목 : <input type="text" name="title"><br>
 		내용 : <input type="text" name="content"><br>
+		파일 첨부 : <input type="file" name="attach"><br>
 		<button>입력</button>
 		<button type="reset">초기화</button>
 	</form>

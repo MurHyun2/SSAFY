@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.myboard.board.model.dao.BoardDao">
+	<resultMap type="Board" id="BoardMap">
+		<result column="no" property="no"/>
+		<result column="title" property="title"/>
+		<result column="content" property="content"/>
+		<result column="view_cnt" property="viewCnt"/>
+		<result column="reg_date" property="regDate"/>
+	</resultMap>
+	
+	<resultMap type="BoardFile" id="BoardFileMap">
+		<result column="file_no" property="fileNo"/>
+		<result column="file_path" property="filePath"/>
+		<result column="ori_name" property="oriName"/>
+		<result column="system_name" property="systemName"/>
+		<result column="no" property="no"/>
+	</resultMap>
+	
+	<select id="selectBoardAll" resultMap="BoardMap">
+		SELECT *
+		FROM board
+		ORDER BY no DESC;
+	</select>
+	
+	<select id="selectBoardOne" resultMap="BoardMap" parameterType="int">
+		SELECT *
+		FROM board
+		WHERE no = #{no};
+	</select>
+	
+	<insert id="insertBoard" parameterType="Board" useGeneratedKeys="true" keyProperty="no">
+		<!-- 
+		<selectKey order="AFTER" keyProperty="no" resultType="int">
+			SELECT LAST_INSERT_ID() AS last_no
+			FROM dual;
+		</selectKey>
+		 -->
+		INSERT INTO board (title, content)
+		VALUES(#{title}, #{content});
+	</insert>
+
+	<insert id="insertBoardFile" parameterType="BoardFile">
+		INSERT INTO board_file (file_path, ori_name, system_name, no)
+		VALUES(#{filePath}, #{oriName}, #{systemName}, #{no});
+	</insert>
+	
+	<update id="updateBoard" parameterType="Board">
+		UPDATE board
+		SET title = #{title}, content = #{title}
+		WHERE no = #{no}
+	</update>
+	
+	<delete id="deleteBoard" parameterType="int">
+		DELETE FROM board
+		WHERE no = #{no};
+	</delete>
+	
+	<select id="selectBoardFileByNo" resultMap="BoardFileMap" parameterType="int">
+		SELECT *
+		FROM board_file
+		WHERE no = #{no}
+	</select>
+</mapper>

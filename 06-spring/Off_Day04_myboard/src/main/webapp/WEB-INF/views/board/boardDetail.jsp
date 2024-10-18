@@ -17,6 +17,7 @@
 			<td>내용</td>
 			<td>조회수</td>
 			<td>날짜</td>
+			<td>첨부파일</td>
 		</tr>
 		<tr>
 			<td>${board.no }</td>
@@ -24,10 +25,13 @@
 			<td>${board.content }</td>
 			<td>${board.viewCnt }</td>
 			<td>${board.regDate }</td>
+			<td>${board.boardFile.oriName }</td>
 		</tr>
 	</table>
-	<span><a href="${path}/board/boardInsertForm">입력창</a></span>
-	<span><a href="${path}/board/boardUpdateForm?no=${board.no }">수정창</a></span>
-	<span><a href="${path}/board/boardDelete?no=${board.no }">삭제</a></span>
+	<span><a href="${path}/board/boardInsert">입력창</a></span>
+	<span><a href="${path}/board/boardUpdate?no=${board.no }">수정창</a></span>
+	<form action="${path}/board/boardDelete?no=${board.no }" method="post">
+		<button>삭제</button>
+	</form>
 </body>
 </html>
