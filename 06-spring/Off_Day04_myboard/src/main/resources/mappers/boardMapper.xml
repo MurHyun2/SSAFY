@@ -63,4 +63,10 @@
 		FROM board_file
 		WHERE no = #{no}
 	</select>
+	
+	<update id="updateViewCntByNo" parameterType="int">
+		UPDATE board
+		SET view_cnt = view_cnt + 1
+		WHERE no = #{no}
+	</update>
 </mapper>

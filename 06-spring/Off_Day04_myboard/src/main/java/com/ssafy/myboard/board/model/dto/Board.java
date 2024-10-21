@@ -1,4 +1,4 @@
-package com.ssafy.myboard.board.model;
+package com.ssafy.myboard.board.model.dto;
 
 public class Board {
 	private int no;

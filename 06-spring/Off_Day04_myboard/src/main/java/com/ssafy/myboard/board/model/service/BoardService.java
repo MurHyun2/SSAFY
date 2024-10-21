@@ -2,7 +2,7 @@ package com.ssafy.myboard.board.model.service;
 
 import java.util.List;
 
-import com.ssafy.myboard.board.model.Board;
+import com.ssafy.myboard.board.model.dto.Board;
 
 public interface BoardService {
 	List<Board> getBoardList() throws Exception;
@@ -14,4 +14,6 @@ public interface BoardService {
 	void modifyBoard(Board board) throws Exception;
 
 	void removeBoard(int no) throws Exception;
+	
+	void modifyViewCntByNo(int no);
 }

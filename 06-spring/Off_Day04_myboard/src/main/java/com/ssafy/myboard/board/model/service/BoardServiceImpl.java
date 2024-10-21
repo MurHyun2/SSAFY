@@ -4,9 +4,9 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.ssafy.myboard.board.model.Board;
-import com.ssafy.myboard.board.model.BoardFile;
 import com.ssafy.myboard.board.model.dao.BoardDao;
+import com.ssafy.myboard.board.model.dto.Board;
+import com.ssafy.myboard.board.model.dto.BoardFile;
 
 @Service
 public class BoardServiceImpl implements BoardService {
@@ -50,6 +50,11 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public void removeBoard(int no) throws Exception {
 		boardDao.deleteBoard(no);
+	}
+
+	@Override
+	public void modifyViewCntByNo(int no) {
+		boardDao.updateViewCntByNo(no);
 	}
 
 }
