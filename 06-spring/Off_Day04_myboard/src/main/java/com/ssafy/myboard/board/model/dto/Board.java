@@ -3,6 +3,7 @@ package com.ssafy.myboard.board.model.dto;
 public class Board {
 	private int no;
 	private String title;
+	private String writer;
 	private String content;
 	private int viewCnt;
 	private String regDate;
@@ -21,13 +22,22 @@ public class Board {
 		super();
 	}
 
-	public Board(int no, String title, String content, int viewCnt, String regDate) {
+	public Board(int no, String title, String writer, String content, int viewCnt, String regDate) {
 		super();
 		this.no = no;
 		this.title = title;
+		this.writer = writer;
 		this.content = content;
 		this.viewCnt = viewCnt;
 		this.regDate = regDate;
+	}
+
+	public String getWriter() {
+		return writer;
+	}
+
+	public void setWriter(String writer) {
+		this.writer = writer;
 	}
 
 	public int getNo() {
@@ -72,8 +82,8 @@ public class Board {
 
 	@Override
 	public String toString() {
-		return "Board [no=" + no + ", title=" + title + ", content=" + content + ", viewCnt=" + viewCnt + ", regDate="
-				+ regDate + "]";
+		return "Board [no=" + no + ", title=" + title + ", writer=" + writer + ", content=" + content + ", viewCnt="
+				+ viewCnt + ", regDate=" + regDate + ", boardFile=" + boardFile + "]";
 	}
 
 }

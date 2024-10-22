@@ -7,6 +7,7 @@ import java.io.OutputStream;
 import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Map;
 import java.util.UUID;
 
 import org.springframework.stereotype.Controller;
@@ -19,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.ssafy.myboard.board.model.dto.Board;
 import com.ssafy.myboard.board.model.dto.BoardFile;
+import com.ssafy.myboard.board.model.dto.BoardSearch;
 import com.ssafy.myboard.board.model.service.BoardService;
 
 import jakarta.servlet.http.HttpServletResponse;
@@ -33,13 +35,15 @@ public class BoardController {
 	}
 
 	@GetMapping("boardList")
-	public String boardList(Model model) throws Exception {
-		model.addAttribute("list", boardService.getBoardList());
+	public String boardList(BoardSearch boardSearch, Model model) {
+		Map<String, Object> result = boardService.getBoardList(boardSearch); 
+		model.addAttribute("list", result.get("list"));
+		model.addAttribute("pr", result.get("pr"));
 		return "board/boardList";
 	}
 
 	@GetMapping("boardDetail")
-	public String boardDetail(@RequestParam int no, Model model) throws Exception {
+	public String boardDetail(@RequestParam int no, Model model) {
 		boardService.modifyViewCntByNo(no);
 		Board board = boardService.getBoard(no);
 		model.addAttribute("board", board);
@@ -52,12 +56,13 @@ public class BoardController {
 	}
 
 	@GetMapping("boardInsert")
-	public String boardInsert() throws Exception {
+	public String boardInsert() {
 		return "board/boardInsertForm";
 	}
 
 	@PostMapping("boardInsert")
-	public String boardInsert(@RequestParam("attach") MultipartFile attach, Board board) throws Exception {
+	public String boardInsert(@RequestParam("attach") MultipartFile attach, Board board)
+			throws IllegalStateException, IOException {
 
 		String oriName = attach.getOriginalFilename();
 
@@ -84,19 +89,19 @@ public class BoardController {
 	}
 
 	@GetMapping("boardUpdate")
-	public String boardUpdate(@RequestParam int no, Model model) throws Exception {
+	public String boardUpdate(@RequestParam int no, Model model) {
 		model.addAttribute("board", boardService.getBoard(no));
 		return "board/boardUpdateForm";
 	}
 
 	@PostMapping("boardUpdate")
-	public String boardUpdate(Board board) throws Exception {
+	public String boardUpdate(Board board) {
 		boardService.modifyBoard(board);
 		return "redirect:/board/boardDetail?no=" + board.getNo();
 	}
 
 	@PostMapping("boardDelete")
-	public String boardDelete(@RequestParam int no) throws Exception {
+	public String boardDelete(@RequestParam int no) {
 		boardService.removeBoard(no);
 		return "redirect:/board/boardList";
 	}
@@ -107,9 +112,7 @@ public class BoardController {
 		// 파일의 전체 경로를 생성합니다.
 		String fullPath = "C:/SSAFY/uploads" + filePath + "/" + systemName;
 		File file = new File(fullPath);
-
-		System.out.println("Attempting to download file: " + fullPath); // 디버깅 로그 추가
-
+		System.out.println(file.toString());
 		if (file.exists()) {
 			response.setContentType("application/octet-stream");
 			response.setHeader("Content-Disposition",
