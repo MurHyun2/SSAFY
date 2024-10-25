@@ -1,8 +1,16 @@
 package com.ssafy.myboard.board.model.dto;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
+
+@Schema(name = "Idol(아이돌 정보 표현)", description = "아이돌 정보를 표현하는 DTO 객체")
 public class Idol {
+	
+	@Schema(name = "no(아이돌 구분 번호)")
 	private int no;
+	@Schema(name = "name(이름)", requiredMode = RequiredMode.REQUIRED)
 	private String name;
+	@Schema(name = "gender(성별)", example = "아이돌의 성별을 나타낸다.")
 	private String gender;
 
 	public int getNo() {
