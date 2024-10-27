@@ -11,6 +11,7 @@
             <entry path="null"/>
         </endorsedDirs>
     </libraryInfo>
+    <libraryInfo home="C:\Program Files\Java\jdk-17.0.9.9-hotspot" version="17.0.9"/>
     <libraryInfo home="C:\SSAFY\sts-4.23.1.RELEASE\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_21.0.3.v20240426-1530\jre" version="21.0.3"/>
     <libraryInfo home="C:\Program Files\BellSoft\LibericaJDK-17" version="17.0.11"/>
 </libraryInfos>
