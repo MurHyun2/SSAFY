@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    
+    //Promise 객체를 반환하는 함수 정의
+    function MyFetch(data) {
+      return new Promise(function (success, fail) {
+        if (data.length < 10) {
+          success({
+            data: data,
+            msg: data.length + " : 10보다 짧아요"
+          });
+        } else {
+          fail({
+            data: data,
+            msg: data.length + " : 10보다 길어요"
+          });
+        }
+      });
+    }
+
+    MyFetch("23411156789")
+      .then(function (msg) { console.log("성공 했음!!! -> " + msg.data + msg.msg) })
+      .catch(function (msg) { console.log("실패 했음ㅠㅠ -> " + msg.data + msg.msg) });
+  </script>
+</body>
+
+</html>

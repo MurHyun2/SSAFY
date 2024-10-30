@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #output div {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin: 5px 0;
+      border-radius: 5px;
+      background-color: #f0f0f0;
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+  <div id="btn-area">
+    <button id="btn-all">전체 조회</button>
+    <button id="btn-one">상세 조회</button>
+    <button id="btn-regist">등록</button>
+    <button id="btn-modify">수정</button>
+    <button id="btn-delete">삭제</button>
+  </div>
+  <hr />
+  <div id="output"></div>
+  <script>
+    /*
+      async 함수 선언에 붙인다.
+      await는 반드시 async 함수와 같이 사용한다.
+    */
+    async function requestIdolList() {
+      try {
+        const { data: idolList } = await axios.get("http://192.168.210.40:8080/api/idol")
+        const outputDiv = document.getElementById("output");
+        outputDiv.innerHTML = ""; // 초기화
+
+        idolList.forEach(function (idol) {
+          const idolDiv = document.createElement("div");
+          idolDiv.innerHTML = `
+              <p>번호 : ${idol.no}</p>
+              <p>이름 : ${idol.name}</p>
+              <p>성별 : ${idol.gender}</p>
+            `;
+          outputDiv.appendChild(idolDiv);
+        })
+      } catch (err) {
+        console.log('Register err : ', err.response);
+        const statusCode = err.response.status; // 400
+        const statusText = err.response.statusText; // Bad Request
+        const message = err.response.data.message[0]; // id should not be empty
+        console.log(`${statusCode} - ${statusText} - ${message}`);
+      }
+    }
+
+  </script>
+  <script>
+    const btnAll = document.getElementById("btn-all");
+    btnAll.addEventListener("click", async function () {
+      await requestIdolList();
+    });
+
+    const btnOne = document.getElementById("btn-one");
+    btnOne.addEventListener("click", async () => {
+      try {
+        const { data: idol } = await axios.get("http://192.168.210.40:8080/api/idol/260")
+        const outputDiv = document.getElementById("output");
+        outputDiv.innerHTML = ""; // 초기화
+
+        const idolDiv = document.createElement("div");
+        idolDiv.innerHTML = `
+            <p>번호 : ${idol.no}</p>
+            <p>이름 : ${idol.name}</p>
+            <p>성별 : ${idol.gender}</p>
+          `
+        outputDiv.appendChild(idolDiv);
+      } catch (err) {
+        console.log('Register err : ', err.response);
+        const statusCode = err.response.status; // 400
+        const statusText = err.response.statusText; // Bad Request
+        const message = err.response.data.message[0]; // id should not be empty
+        console.log(`${statusCode} - ${statusText} - ${message}`);
+      }
+    });
+
+    const btnDelete = document.getElementById("btn-delete");
+    btnDelete.addEventListener("click", async () => {
+      const response = await axios.delete("http://192.168.210.40:8080/api/idol/484")
+      requestIdolList();
+      alert("삭제 되었습니다.");
+    });
+
+    const idolInfo = { "name": "루데맥", "gender": "M" };
+    const btnRegist = document.getElementById("btn-regist");
+    btnRegist.addEventListener("click", async () => {
+      const response = await axios.post("http://192.168.210.40:8080/api/idol", idolInfo)
+      requestIdolList();
+    });
+
+    const idolModifyInfo = { "name": "루 데 맥" };
+    const btnModify = document.getElementById("btn-modify");
+    btnModify.addEventListener("click", async () => {
+      await axios.put("http://192.168.210.40:8080/api/idol/499", idolModifyInfo)
+      requestIdolList();
+    });
+  </script>
+</body>
+
+</html>

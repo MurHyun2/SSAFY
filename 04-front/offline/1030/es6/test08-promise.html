@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*
+      사용하는 형식
+      new Promise(executor-callbackfn);
+
+      executor-callbackfn 함수의 형태
+      function executor(resolve, reject) {}
+      
+      rosolve : 성공 시 실행 - then 호출
+      reject : 실패 시 실행 - catch 호출
+    */
+    console.dir(Promise);
+
+    let success = true;
+
+    new Promise(function (resolve, reject) {
+      console.log('promise 실행');
+      if (success) {
+        console.log("성공 : resolve 실행");
+        resolve(); // 성공
+      } else {
+        console.log("실패 : reject 실행");
+        reject(); // 실패
+      }
+    });
+
+    /*
+      function MyPromise(callback) {
+        callback();
+        // console.log("MyPromise");
+      }
+
+      new MyPromise();
+    */
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    let success = true;
+    // success = false;
+
+    new Promise(function (resolve, reject) {
+      if (success) {
+        resolve("성공..!!!!"); // 성공
+      } else {
+        reject("실패..!!!!"); // 실패
+      }
+    }).then(function (msg) { console.log("Promise가 성공해서 then 호출. " + msg) })
+      .catch(function (msg) { console.log("Promise가 실패해서 catch 호출. " + msg) })
+      .finally(function () { console.log("Finally 호출") });
+  </script>
+</body>
+
+</html>

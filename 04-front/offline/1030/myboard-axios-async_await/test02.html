@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #output div {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin: 5px 0;
+      border-radius: 5px;
+      background-color: #f0f0f0;
+      transition: 0.5s;
+    }
+
+    #output div:hover {
+      cursor: pointer;
+      background-color: #1118;
+      color: #fff;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="output"></div>
+  <script>
+    function requestIdolList() {
+      const URL = "http://192.168.210.40:8080/api/idol";
+      const xhr = new XMLHttpRequest(); // 1단계. 객체 생성
+      xhr.onreadystatechange = function () { // 2단계. 응답결과를 처리할 함수 등록
+        if (xhr.readyState === XMLHttpRequest.DONE && xhr.status < 300) {
+          console.log(xhr.readyState, typeof xhr.responseText, xhr.responseText);
+
+          const outputDiv = document.getElementById("output");
+          outputDiv.innerHTML = ""; // 초기화
+
+          const idolList = JSON.parse(xhr.responseText);
+          idolList.forEach(function (idol) {
+            const idolDiv = document.createElement("div");
+            //div 클릭시 상세 정보 보이기
+            idolDiv.addEventListener("click", () => requestIdolDetail(idol.no));
+
+            idolDiv.innerHTML = `
+              <p>번호 : ${idol.no}</p>
+              <p>이름 : ${idol.name}</p>
+              <p>성별 : ${idol.gender}</p>
+              `
+            outputDiv.appendChild(idolDiv);
+          });
+        }
+      }
+      xhr.open("GET", URL); // 3단계. 요청할 주소에 대해서 설정
+      xhr.send();
+    }
+
+    function requestIdolDetail(no) {
+      const URL = "http://192.168.210.40:8080/api/idol/" + no;
+      const xhr = new XMLHttpRequest(); // 1단계. 객체 생성
+      xhr.onreadystatechange = function () { // 2단계. 응답결과를 처리할 함수 등록
+        if (xhr.readyState === XMLHttpRequest.DONE && xhr.status < 300) {
+
+          const outputDiv = document.getElementById("output");
+          outputDiv.innerHTML = ""; // 초기화
+
+          const idol = JSON.parse(xhr.responseText);
+
+          const idolDiv = document.createElement("div");
+          idolDiv.innerHTML = `
+           <p>번호 : ${idol.no}</p>
+           <p>이름 : ${idol.name}</p>
+           <p>성별 : ${idol.gender}</p>
+          `
+          outputDiv.appendChild(idolDiv);
+
+          idolDiv.addEventListener("click", () => requestIdolList());
+
+          const buttonDiv = document.createElement("div")
+          buttonDiv.innerHTML = `
+            <button onclick="requestIdolList()">전체 조회</button>
+            <button>수정</button>
+            <button onclick="requestIdolDelete(${idol.no})">삭제</button>
+          `
+          outputDiv.appendChild(buttonDiv);
+        }
+      }
+      xhr.open("GET", URL); // 3단계. 요청할 주소에 대해서 설정
+      xhr.send();
+    };
+
+    function requestIdolDelete(no) {
+      const URL = "http://192.168.210.40:8080/api/idol/" + no;
+      const xhr = new XMLHttpRequest(); // 1단계. 객체 생성
+
+      xhr.onreadystatechange = function () { // 2단계. 응답결과를 처리할 함수 등록
+        if (xhr.readyState === XMLHttpRequest.DONE && xhr.status < 300) {
+          requestIdolList();
+          alert("삭제 되었습니다.");
+        }
+      }
+
+      xhr.open("DELETE", URL); // 3단계. 요청할 주소에 대해서 설정
+      xhr.send();
+    }
+
+  </script>
+  <script>
+    requestIdolList();
+
+    const btnAll = document.getElementById("btn-all");
+    btnAll.addEventListener("click", function () {
+      requestIdolList();
+    });
+
+
+    // const btnRegist = document.getElementById("btn-regist");
+    // btnRegist.addEventListener("click", function () {
+    //   const URL = "http://192.168.210.40:8080/api/idol";
+    //   const xhr = new XMLHttpRequest(); // 1단계. 객체 생성
+
+    //   xhr.onreadystatechange = function () { // 2단계. 응답결과를 처리할 함수 등록
+    //     if (xhr.readyState === XMLHttpRequest.DONE) {
+    //       if (xhr.status < 300) {
+    //         requestIdolList();
+    //         alert("Success:", xhr.responseText);
+    //       } else {
+    //         console.error("Error:", xhr.statusText);
+    //       }
+    //     }
+    //   };
+
+    //   xhr.open("POST", URL); // 3단계. 요청할 주소에 대해서 설정
+    //   xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+
+    //   const idolInfo = { "name": "루데맥", "gender": "M" };
+    //   xhr.send(JSON.stringify(idolInfo));
+    // });
+
+    // const btnModify = document.getElementById("btn-modify");
+    // btnModify.addEventListener("click", function () {
+    //   const URL = "http://192.168.210.40:8080/api/idol/33060";
+    //   const xhr = new XMLHttpRequest(); // 1단계. 객체 생성
+
+    //   xhr.onreadystatechange = function () { // 2단계. 응답결과를 처리할 함수 등록
+    //     if (xhr.readyState === XMLHttpRequest.DONE) {
+    //       if (xhr.status < 300) {
+    //         requestIdolList();
+    //         alert("Success:", xhr.responseText);
+    //       } else {
+    //         console.error("Error:", xhr.statusText);
+    //       }
+    //     }
+    //   };
+
+    //   xhr.open("PUT", URL); // 3단계. 요청할 주소에 대해서 설정
+    //   xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+
+    //   const idolInfo = { "name": "루 데 맥" };
+    //   xhr.send(JSON.stringify(idolInfo));
+    // });
+
+  </script>
+</body>
+
+</html>
