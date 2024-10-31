@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Vue</title>
+  <!-- 1. CDN 추가 -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <!-- 6. 꺼내서 사용할 때는 .value 필요 없다. 자동으로 사용 -->
+    <h1>{{count}}</h1>
+    <button v-on:click="increment">증가</button>
+  </div>
+
+  <!-- script -->
+  <script>
+    const { createApp, ref } = Vue; // 구조 분해 할당
+
+    // 2. Vue Instance 생성 완료
+    const app = createApp({
+      setup() {
+        const count = ref(0)
+        const increment = function () { // 함수 표현식
+          count.value++ // 카운트 값을 증가 시키는 메서드
+        }
+        return {
+          count,
+          increment,
+        }
+      }
+    })
+
+    // 3. DOM과 연결을 하겠다.
+    app.mount("#app");
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <h1>{{msg}}</h1>
+    <h1>{{msg2}}</h1>
+  </div>
+
+  <script>
+    const { createApp, ref } = Vue;
+    const app = createApp({
+      setup() {
+        let msg = "Hello Vue!";
+        const msg2 = ref("msg2 Hello");
+
+        setTimeout(() => {
+          console.log("msg 변경 전");
+          msg = "Change 1 !!"
+          msg2.value = "Change 2 !!"
+        }, 3000)
+
+        return {
+          msg,
+          msg2,
+        }
+      }
+    }).mount('#app');
+  </script>
+</body>
+
+</html>
