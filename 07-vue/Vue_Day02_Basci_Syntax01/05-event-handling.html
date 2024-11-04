@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Vue</title>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <p>Count : {{count}}</p>
+    <button @click="count++">증가</button>
+    <button @click="count--">감소</button>
+    <hr>
+    <button @click="myFunc">메서드동작</button>
+    <hr>
+    <button @click="greeting('Hiiii')">Hii</button>
+    <button @click="greeting('Byeee')">Byeeee</button>
+    <button @click="warning('Bo', $event)">Bo</button>
+    <hr>
+    <a @click.stop.prevent="onLink" href="https://www.ssafy.com">SSAFY 공홈</a>
+    <hr>
+    <input type="text" @keyup.enter="onSubmit">
+  </div>
+  <script>
+    const { createApp, ref } = Vue;
+
+    const app = createApp({
+      setup() {
+        const count = ref(0);
+        const name = ref("ymg")
+
+        const myFunc = function (event) {
+          console.log(event)
+          console.log(event.target)
+          console.log(`Hello ${name.value}`);
+        }
+
+        const greeting = function (message) {
+          console.log(message)
+        }
+
+        const warning = function (message, evnet) {
+          console.log(message)
+          console.log(event)
+        }
+
+        const onLink = () => {
+          console.log("링크 막았음!")
+        }
+
+        const onSubmit = ()=> console.log("엔터 눌렀음!")
+        
+
+        return { count, myFunc, greeting, warning, onLink,onSubmit, };
+      },
+    });
+    app.mount("#app");
+  </script>
+</body>
+
+</html>

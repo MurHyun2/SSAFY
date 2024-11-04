@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Vue</title>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <input type="checkbox" v-model="checked" id="check">
+    <label for="check">로봇쳌</label>
+    <hr>
+    <div>쳌네임 : {{checkedNames}}</div>
+    <input type="checkbox" value="Lee" v-model="checkedNames" id="Lee">
+    <label for="Lee">Lee</label>
+    <input type="checkbox" value="Dee" v-model="checkedNames" id="Dee">
+    <label for="Dee">Dee</label>
+    <input type="checkbox" value="Hee" v-model="checkedNames" id="Hee">
+    <label for="Hee">Hee</label>
+    <hr>
+    <!-- radio -->
+    <div>쳌네임 : {{radioName}}</div>
+    <input type="radio" value="Leeee" v-model="radioName" id="Leeee">
+    <label for="Leeee">Leeee</label>
+    <input type="radio" value="Deeee" v-model="radioName" id="Deeee">
+    <label for="Deeee">Deeee</label>
+    <input type="radio" value="Heeee" v-model="radioName" id="Heeee">
+    <label for="Heeee">Heeee</label>
+    <hr>
+    <select v-model="selected" name="selected">
+      <option value="" disabled>선택해줘</option>
+      <option value="Loooo">Loooo</option>
+      <option value="Doooo">Doooo</option>
+      <option value="Hoooo">Hoooo</option>
+    </select>
+    <p>{{selected}}</p>
+  </div>
+  <script>
+    const { createApp, ref } = Vue;
+
+    const app = createApp({
+      setup() {
+        const checked = ref(false);
+        const checkedNames = ref([]);
+        const radioName = ref("");
+        const selected = ref("");
+
+        return {
+          checked,
+          checkedNames,
+          selected,
+          radioName,
+        };
+      },
+    });
+    app.mount("#app");
+  </script>
+</body>
+
+</html>
