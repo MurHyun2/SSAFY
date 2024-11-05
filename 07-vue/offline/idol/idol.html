@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #list div,
+    #detail,
+    #register {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin: 5px 0;
+      border-radius: 5px;
+      background-color: #f0f0f0;
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <div id="list" v-if="currentView === 'list'">
+      <button @click="registIdolForm">등록</button>
+      <div v-for="idol in idols" :key="idol.no" @click="requestIdol(idol.no)">
+        <p>번호 : {{idol.no}}</p>
+        <p>이름 : {{idol.name}}</p>
+        <p>성별 : {{idol.gender}}</p>
+      </div>
+    </div>
+
+    <!-- 아이돌 상세 정보 파트 -->
+    <div v-if="idol">
+      <div id="detail" v-if="currentView === 'detail'">
+        <p>번호 : {{idol.no}}</p>
+        <p>이름 : {{idol.name}}</p>
+        <p>성별 : {{idol.gender}}</p>
+        <button @click="modifyIdolForm">수정</button>
+        <button @click="deleteIdol(idol.no)">삭제</button>
+        <button @click="requestIdolList">목록</button>
+      </div>
+    </div>
+
+    <!-- 아이돌 등록 파트 -->
+    <div id="register" v-if="currentView === 'register'">
+      <form @submit="registIdol">
+        <p>이름 : <input type="text" v-model="idol.name"></p>
+        <p>성별 : <input type="text" v-model="idol.gender"></p>
+        <button>등록</button>
+        <button @click="requestIdolList">목록</button>
+      </form>
+    </div>
+
+    <!-- 아이돌 수정 파트 -->
+    <div id="modify" v-if="currentView === 'modify'">
+      <form @submit="modifyIdol(idol.no)">
+        <p>이름 : <input type="text" v-model="idol.name"></p>
+        <p>성별 : <input type="text" v-model="idol.gender"></p>
+        <button>수정</button>
+        <button @click="requestIdolList">목록</button>
+      </form>
+    </div>
+  </div>
+  <script>
+    const { createApp, ref } = Vue;
+    const app = createApp({
+      setup() {
+        const currentView = ref("list");
+        const idols = ref([]);
+        const idol = ref({});
+
+        const registIdolForm = () => {
+          idol.value = {};  // 빈 객체로 초기화
+          currentView.value = "register";
+        };
+
+        const modifyIdolForm = () => {
+          currentView.value = "modify"
+        }
+
+        const requestIdolList = async () => {
+          try {
+            const { data: idolList } = await axios.get("http://192.168.210.40:8080/api/idol")
+            console.dir(idolList);
+            idols.value = idolList;
+            currentView.value = "list";
+          } catch (err) {
+            console.log('Register err : ', err.response);
+            const statusCode = err.response.status; // 400
+            const statusText = err.response.statusText; // Bad Request
+            const message = err.response.data.message[0]; // id should not be empty
+            console.log(`${statusCode} - ${statusText} - ${message}`);
+          }
+        }
+
+        const requestIdol = async (no) => {
+          try {
+            const { data: idolData } = await axios.get(`http://192.168.210.40:8080/api/idol/${no}`)
+            console.log(idolData);
+            idol.value = idolData;
+            currentView.value = "detail";
+          } catch (err) {
+            console.log('Register err : ', err.response);
+            const statusCode = err.response.status; // 400
+            const statusText = err.response.statusText; // Bad Request
+            const message = err.response.data.message[0]; // id should not be empty
+            console.log(`${statusCode} - ${statusText} - ${message}`);
+          }
+        }
+
+        const registIdol = async () => {
+          try {
+            await axios.post("http://192.168.210.40:8080/api/idol", idol.value);
+            requestIdolList();  // 성공 후 목록을 다시 불러옴
+          } catch (err) {
+            console.log('등록 에러 : ', err.response);
+          }
+        };
+
+        const deleteIdol = async (no) => {
+          try {
+            await axios.delete(`http://192.168.210.40:8080/api/idol/${no}`);
+            requestIdolList();  // 성공 후 목록을 다시 불러옴
+          } catch (err) {
+            console.log('삭제 에러 : ', err.response);
+          }
+        }
+
+        const modifyIdol = async (no) => {
+          try {
+            await axios.put(`http://192.168.210.40:8080/api/idol/${no}`, idol.value);
+            requestIdolList();
+          } catch (err) {
+            console.log('수정 에러 : ', err.response);
+          }
+        }
+
+        requestIdolList();
+
+        return {
+          idols,
+          idol,
+          requestIdol,
+          currentView,
+          requestIdolList,
+          registIdolForm,
+          registIdol,
+          deleteIdol,
+          modifyIdolForm,
+          modifyIdol,
+        }
+      }
+    });
+    app.mount('#app');
+  </script>
+</body>
+
+</html>
