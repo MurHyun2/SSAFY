@@ -83,7 +83,7 @@
         const requestIdolList = async () => {
           try {
             const { data: idolList } = await axios.get("http://192.168.210.40:8080/api/idol")
-            console.dir(idolList);
+            // console.dir(idolList);
             idols.value = idolList;
             currentView.value = "list";
           } catch (err) {
